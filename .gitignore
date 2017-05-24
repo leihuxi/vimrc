@@ -1,0 +1,8 @@
+temp_dirs/undodir/*
+temp_dirs/sessions/*
+temp_dirs/yankring_history_v2.txt
+my_configs.vim
+plugged/*
+tags
+.DS_Store
+autoload/*
