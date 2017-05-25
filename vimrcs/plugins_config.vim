@@ -189,6 +189,24 @@ nnoremap <leader>gc :YcmDiags<CR>
 
 let g:ycm_global_ycm_extra_conf = g:plugdir.'YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion = 1
+function! s:CustomizeYcmLocationWindow()
+    " Move the window to the top of the screen.
+    wincmd K
+    " Set the window height to 5.
+    5wincmd _
+    " Switch back to working window.
+    wincmd p
+endfunction
+function! s:CustomizeYcmQuickFixWindow()
+    " Move the window to the top of the screen.
+    wincmd K
+    " Set the window height to 5.
+    5wincmd _
+endfunction
+if has("autocmd")
+    autocmd User YcmQuickFixOpened call s:CustomizeYcmQuickFixWindow()
+    autocmd User YcmLocationOpened call s:CustomizeYcmLocationWindow()
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Indexer

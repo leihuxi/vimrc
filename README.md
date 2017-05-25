@@ -203,7 +203,7 @@ The [leader](http://learnvimscriptthehardway.stevelosh.com/chapters/06.html#lead
 
 [UndoTree]:
 
-    nnoremap <leader>dt :UndotreeToggle<CR>
+    nnoremap <leader>u :UndotreeToggle<CR>
 
 [A.vim]:
 
@@ -216,10 +216,10 @@ Fast saving of a buffer (`<leader>w`):
 
 	nmap <leader>w :w!<cr>
 	
-Map `<Space>` to `/` (search) and `<leader>+<Space>` to `?` (backwards search):
+Map `<Space>` to `/` (search) and `<Ctrl>+<Space>` to `?` (backwards search):
 	
 	map <space> /
-	map <leader><space> ?
+	map <C-space> ?
 	map <silent> <leader><cr> :noh<cr>
 
 Disable highlights when you press `<leader><cr>`:
