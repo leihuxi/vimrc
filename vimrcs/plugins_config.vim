@@ -137,7 +137,7 @@ let g:solarized_menu      =     0
 " => Git gutter (Git diff)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gitgutter_enabled=1
-nnoremap <silent> <leader>d :GitGutterToggle<cr>
+nnoremap <silent> <leader>df :GitGutterToggle<cr>
 let g:gitgutter_max_signs=500  " default value
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -189,10 +189,6 @@ nnoremap <leader>gc :YcmDiags<CR>
 
 let g:ycm_global_ycm_extra_conf = g:plugdir.'YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_min_num_identifier_candidate_chars = 4
-let g:ycm_extra_conf_globlist = ['~/repos/*']
-let g:acp_enableAtStartup = 0
-let g:ycm_collect_identifiers_from_tags_files = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Indexer
@@ -286,19 +282,19 @@ let g:lt_height = 10
 " => Undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "toggles the undo plugin window
-nnoremap <leader>dt :UndotreeToggle<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => UltiSnip and Snippet
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:UltiSnipsExpandTrigger="ii"
 " we can't use <tab> as our snippet key since we use that with YouCompleteMe
-let g:UltiSnipsSnippetsDir         = g:tempdir.'UltiSnips'
+" let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 let g:UltiSnipsListSnippets        = "<c-m-s>"
 let g:UltiSnipsJumpForwardTrigger  = "<right>"
 let g:UltiSnipsJumpBackwardTrigger = "<left>"
-let g:snips_author                 = 'leihu xi'
-let g:neosnippet#snippets_directory= g:tempdir.'vim-snippets/snippets'
+" let g:snips_author                 = 'leihu xi'
+" let g:neosnippet#snippets_directory= g:tempdir.'vim-snippets/snippets'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NerdTree
@@ -483,7 +479,7 @@ nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 let g:vim_json_syntax_conceal = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Color-coded 
+" => Color-coded
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:color_coded_filetypes = ['c', 'cc', 'cpp', 'objc']
 " Disable color_coded in diff mode
