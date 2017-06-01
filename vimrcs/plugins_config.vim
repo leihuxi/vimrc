@@ -25,6 +25,7 @@ Plug 'tomasr/molokai'
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'godlygeek/csapprox'
 
 " General
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -52,12 +53,18 @@ function! BuildYCM(info)
     endif
 endfunction
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM')}
-function! BuildColorCoded(info)
-    if a:info.status == 'installed' || a:info.force
-        silent !(mkdir build; cd build; cmake ..; make; make install)
-    endif
-endfunction
-Plug 'jeaye/color_coded', {'do' : function('BuildColorCoded')}
+
+if has("nvim")
+    Plug 'arakashic/chromatica.nvim'
+else
+    function! BuildColorCoded(info)
+        if a:info.status == 'installed' || a:info.force
+            silent !(mkdir build; cd build; cmake ..; make; make install)
+        endif
+    endfunction
+    Plug 'jeaye/color_coded', {'do' : function('BuildColorCoded')}
+endif
+
 Plug 'Valloric/ListToggle'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'vim-scripts/indexer.tar.gz'
@@ -505,3 +512,8 @@ if &diff
     let g:color_coded_enabled = 0
 endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Color-coded
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:chromatica#libclang_path='/usr/lib/llvm-5.0/lib'
+let g:chromatica#enable_at_startup=1

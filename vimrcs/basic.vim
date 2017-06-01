@@ -146,7 +146,6 @@ set foldcolumn=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable
-
 " Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
     set t_Co=256
@@ -165,6 +164,11 @@ if has("gui_running")
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
+endif
+
+" Enable 24bit colors if Use vim8
+if (has("termguicolors"))
+ set termguicolors
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
