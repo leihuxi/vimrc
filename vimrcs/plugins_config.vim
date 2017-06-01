@@ -49,7 +49,7 @@ Plug 'justinmk/vim-gtfo'
 " Program
 function! BuildYCM(info)
     if a:info.status == 'installed' || a:info.force
-        !./install.py --clang-completer --gocode-completer --tern-completer
+        silent !(git submodule update --init --recursive ;./install.py --clang-completer --gocode-completer --tern-completer)
     endif
 endfunction
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM')}
