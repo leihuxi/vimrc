@@ -168,7 +168,7 @@ endif
 
 " Enable 24bit colors if Use vim8
 if (has("termguicolors"))
- set termguicolors
+    set termguicolors
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
