@@ -6,6 +6,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plug Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:clangdir='usr/lib/llvm-5.0/lib'
 let g:rootdir='~/.vim_runtime/'
 let g:plugdir=g:rootdir.'plugged/'
 let g:tempdir=g:rootdir.'temp_dirs/'
@@ -515,5 +516,5 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Color-coded
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:chromatica#libclang_path='/usr/lib/llvm-5.0/lib'
+let g:chromatica#libclang_path=g:clangdir
 let g:chromatica#enable_at_startup=1
