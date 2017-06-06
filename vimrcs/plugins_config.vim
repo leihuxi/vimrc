@@ -73,8 +73,8 @@ Plug 'vim-scripts/indexer.tar.gz'
 Plug 'rhysd/vim-clang-format'
 Plug 'vim-scripts/a.vim'
 Plug 'majutsushi/tagbar'
-Plug 'scrooloose/syntastic'
-" Plug 'w0rp/ale'
+" Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 Plug 'vim-scripts/Conque-GDB'
 
 " Snip
