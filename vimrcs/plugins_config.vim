@@ -73,8 +73,8 @@ Plug 'vim-scripts/indexer.tar.gz'
 Plug 'rhysd/vim-clang-format'
 Plug 'vim-scripts/a.vim'
 Plug 'majutsushi/tagbar'
-" Plug 'scrooloose/syntastic'
-Plug 'w0rp/ale'
+Plug 'scrooloose/syntastic'
+" Plug 'w0rp/ale'
 Plug 'vim-scripts/Conque-GDB'
 
 " Snip
@@ -497,7 +497,7 @@ if &diff
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Color-coded
+" => Chromatica
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:chromatica#libclang_path=g:clangdir
 let g:chromatica#enable_at_startup=1
