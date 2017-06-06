@@ -11,6 +11,7 @@ let g:rootdir='~/.vim_runtime/'
 let g:plugdir=g:rootdir.'plugged/'
 let g:tempdir=g:rootdir.'temp_dirs/'
 call plug#begin(g:plugdir)
+let g:plug_window = 'enew' 
 " VimL Lib
 Plug 'vim-scripts/DfrankUtil'
 Plug 'vim-scripts/vimprj'
