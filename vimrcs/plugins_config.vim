@@ -47,6 +47,7 @@ Plug 'amix/open_file_under_cursor.vim'
 Plug 'tpope/vim-commentary'
 Plug 'vim-scripts/YankRing.vim'
 Plug 'justinmk/vim-gtfo'
+Plug 'Raimondi/delimitMate'
 
 " Program
 function! BuildYCM(info)
