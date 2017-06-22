@@ -114,9 +114,8 @@ Plug 'vim-scripts/httplog'
 " Json
 Plug 'leshill/vim-json'
 
-" Javascript and Java
+" Javascript
 Plug 'marijnh/tern_for_vim'
-Plug 'artur-shaik/vim-javacomplete2'
 
 " Protobuf
 Plug 'uarun/vim-protobuf'
@@ -253,6 +252,8 @@ map <leader>fk :FzfMarks<cr>
 map <leader>fc :FzfCommits<cr>
 map <leader>fh :FzfHistory<cr>
 map <leader>fs :FzfGFiles?<cr>
+map <leader>fn :FzfSnippets<cr>
+map <leader>ft :FzfTags<cr>
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
