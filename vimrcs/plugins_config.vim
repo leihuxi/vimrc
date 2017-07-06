@@ -104,9 +104,6 @@ Plug 'nickhutchinson/vim-systemtap'
 "Go
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
-" Python
-Plug 'klen/python-mode', { 'branch': 'master' }
-
 " Nginx
 Plug 'evanmiller/nginx-vim-syntax'
 Plug 'vim-scripts/httplog'
@@ -402,13 +399,6 @@ nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <c-y> :TmuxNavigatePrevious<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Python mode
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:pymode_rope=0
-let g:pymode_rope_complete_on_dot = 0
-"let g:pymode_python = 'python'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => YankRing
