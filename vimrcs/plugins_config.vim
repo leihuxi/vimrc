@@ -45,8 +45,6 @@ Plug 'vim-scripts/matchit.zip'
 Plug 'mhinz/vim-startify'
 Plug 'amix/open_file_under_cursor.vim'
 Plug 'tpope/vim-commentary'
-Plug 'vim-scripts/YankRing.vim'
-Plug 'justinmk/vim-gtfo'
 Plug 'Raimondi/delimitMate'
 
 " Program
@@ -74,9 +72,7 @@ Plug 'vim-scripts/indexer.tar.gz'
 Plug 'rhysd/vim-clang-format'
 Plug 'vim-scripts/a.vim'
 Plug 'majutsushi/tagbar'
-" Plug 'scrooloose/syntastic'
 Plug 'w0rp/ale'
-Plug 'vim-scripts/Conque-GDB'
 
 " Snip
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -110,10 +106,6 @@ Plug 'vim-scripts/httplog'
 
 " Json
 Plug 'leshill/vim-json'
-
-" Javascript and Java
-Plug 'marijnh/tern_for_vim'
-Plug 'artur-shaik/vim-javacomplete2'
 
 " Protobuf
 Plug 'uarun/vim-protobuf'
