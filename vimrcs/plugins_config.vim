@@ -107,6 +107,9 @@ Plug 'vim-scripts/httplog'
 " Json
 Plug 'leshill/vim-json'
 
+" Java
+Plug 'artur-shaik/vim-javacomplete2'
+
 " Protobuf
 Plug 'uarun/vim-protobuf'
 
