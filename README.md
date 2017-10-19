@@ -58,8 +58,8 @@ Just do a git rebase!
 
 ## Included Plugins
 
-I recommend reading the docs of these plugins to understand them better. Each plugin provides a much better Vim experience!
 
+I recommend reading the docs of these plugins to understand them better. Each plugin provides a much better Vim experience!
 * [vim-plug](https://github.com/junegunn/vim-plug.git) : Minimalist Vim Plugin Manager
 * [neoman](https://github.com/nhooyr/neoman.vim.git) : A modern man page plugin for vim
 * [vim-cheat40](https://github.com/lifepillar/vim-cheat40.git) : A Vim cheat sheet that makes sense, inside Vim!
@@ -71,27 +71,29 @@ I recommend reading the docs of these plugins to understand them better. Each pl
 * [undotree](https://github.com/mbbill/undotree.git):The ultimate undo history visualizer for VIM
 * [matchit.zip](https://github.com/vim-scripts/matchit.zip.git):extended % matching for HTML, LaTeX, and many other languages
 * [vim-startify](https://github.com/mhinz/vim-startify.git):The fancy start screen for Vim.
-* [YankRing](https://github.com/vim-scripts/YankRing.vim.git):Maintains a history of previous yanks, changes and deletes
 * [ack.vim](https://github.com/mileszs/ack.vim): Vim plugin for `the_silver_searcher` (ag) or ack -- a wicked fast grep
 * [NERD Tree](https://github.com/scrooloose/nerdtree): A tree explorer plugin for vim
 * [open_file_under_cursor.vim](https://github.com/amix/open_file_under_cursor.vim): Open file under cursor when pressing `gf`
-* [vim-commentary](https://github.com/tpope/vim-commentary): Comment stuff out.  Use `gcc` to comment out a line (takes a count), `gc` to comment out the target of a motion. `gcu` uncomments a set of adjacent commented lines.
 * [vim-fugitive](https://github.com/tpope/vim-fugitive): A Git wrapper so awesome, it should be illegal
 * [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors): Sublime Text style multiple selections for Vim, CTRL+N is remapped to CTRL+S (due to YankRing)
 * [YouCompleteMe](https://github.com/Valloric/YouCompleteMe.git):A code-completion engine for Vim
 * [ListToggle](https://github.com/Valloric/ListToggle.git):A vim plugin for toggling the display of the quickfix list and the location-list.
 * [YCM-Generator](https://github.com/rdnetto/YCM-Generator.git):Generates config files for YouCompleteMe
 * [vim-clang-format](https://github.com/rhysd/vim-clang-format.git):Vim plugin for clang-format, a formatter for C, C++, Obj-C, Java, JavaScript, TypeScript and ProtoBuf
-* [indexer.tar.gz](https://github.com/vim-scripts/indexer.tar.gz.git):indexing all files in project with ctags (can work as add-on for project.tar.gz) 
 * [a.vim](https://github.com/vim-scripts/a.vim.git):Alternate Files quickly (.c --> .h etc)
 * [tagbar](https://github.com/majutsushi/tagbar.git):Vim plugin that displays tags in a window, ordered by scope
 * [Ale](https://github.com/w0rp/ale.git):Asynchronous Lint Engine
-* [Conque-GDB](https://github.com/vim-scripts/Conque-GDB.git):GDB command line interface and terminal emulator in (G)Vim.
 * [UltiSnips](https://github.com/SirVer/ultisnips.git):UltiSnips - The ultimate snippet solution for Vim. Send pull requests to SirVer/ultisnips!
 * [vim-snippets](https://github.com/honza/vim-snippets.git):vim-snipmate default snippets (Previously snipmate-snippets)
 * [vim-gitgutter](https://github.com/airblade/vim-gitgutter.git):A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks.
 * [conflict-marker](https://github.com/rhysd/conflict-marker.vim.git):Weapon to fight against conflicts in Vim.
 * [gv.vim](https://github.com/junegunn/gv.vim.git):A git commit browser
+* [vim-addon-mw-utils](https://github.com/MarcWeber/vim-addon-mw-utils.git):vim: interpret a file by function and cache file automatically
+* [nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin.git):A plugin of NERDTree showing git status
+* [delimitMate](https://github.com/Raimondi/delimitMate.git):Vim plugin, provides insert mode auto-completion for quotes, parens, brackets, etc. http://www.vim.org/scripts/script.php…
+* [repeat.vim](https://github.com/tpope/vim-repeat.git):repeat.vim: enable repeating supported plugin maps with "." http://www.vim.org/scripts/script.php…
+* [vim-nerdtree-tabs](https://github.com/jistr/vim-nerdtree-tabs.git):NERDTree and tabs together in Vim, painlessly
+* [gen_tags.vim](https://github.com/jsfaint/gen_tags.vim.git):Async plugin for vim and neovim to ease the use of ctags/gtags https://vim.sourceforge.io/scripts/sc…
 
 ## Included color schemes
 
@@ -101,21 +103,20 @@ I recommend reading the docs of these plugins to understand them better. Each pl
 * [vim-ariline](https://github.com/vim-airline/vim-airline.git):lean & mean status/tabline for vim that's light as air
 * [vim-ariline-themes](https://github.com/vim-airline/vim-airline-themes.git):A collection of themes for vim-airline
 * [color_coded](https://github.com/jeaye/color_coded.git):A vim plugin for libclang-based highlighting in C, C++, ObjC
+* [csapprox](https://github.com/godlygeek/csapprox.git):Make gvim-only colorschemes work transparently in terminal vim http://www.vim.org/scripts/script.php…
+
 
 ## Included modes
 
-* [vim-systemtap](https://github.com/nickhutchinson/vim-systemtap.git):Vim syntax files from the official Systemtap repo at git://sourceware.org/git/systemtap.git
 * [nginx.vim](https://github.com/vim-scripts/nginx.vim): Highlights configuration files for nginx
 * [vim-go](https://github.com/fatih/vim-go)
 * [nginx-vim](https://github.com/evanmiller/nginx-vim-syntax.git):nginx vim syntax. 
 * [httplog](https://github.com/vim-scripts/httplog.git):Highlight access log of Apache, nginx, etc
-* [tern_for_vim](https://github.com/ternjs/tern_for_vim.git):Tern plugin for Vim
-* [vim-javacomplete2](https://github.com/artur-shaik/vim-javacomplete2.git): Updated javacomplete plugin for vim.
-* [python-mode](https://github.com/python-mode/python-mode.git): Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box.
 * [vim-protobuf](https://github.com/uarun/vim-protobuf.git):Vim syntax highlighting for Google's Protocol Buffers
 * [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator.git):Seamless navigation between tmux panes and vim splits
 * [vim-tmux](https://github.com/tmux-plugins/vim-tmux.git):vim plugin for tmux.conf
 * [vim-json](https://github.com/leshill/vim-json.git):Syntax highlighting for JSON in Vim
+* [markdown-preview.vim](https://github.com/iamcco/markdown-preview.vim.git):Real-time markdown preview plugin for vim
 
 
 ## How to include your own stuff?

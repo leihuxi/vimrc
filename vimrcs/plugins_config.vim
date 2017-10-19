@@ -6,7 +6,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plug Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:clangdir='/usr/lib/llvm-5.0/lib'
+let g:clangdir='/usr/lib/llvm-6.0/lib'
 let g:rootdir='~/.vim_runtime/'
 let g:plugdir=g:rootdir.'plugged/'
 let g:tempdir=g:rootdir.'temp_dirs/'
@@ -69,12 +69,11 @@ endif
 
 Plug 'Valloric/ListToggle'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-Plug 'vim-scripts/indexer.tar.gz'
+Plug 'jsfaint/gen_tags.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'vim-scripts/a.vim'
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
-
 " Snip
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
@@ -102,14 +101,11 @@ Plug 'nickhutchinson/vim-systemtap'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 " Nginx
-Plug 'evanmiller/nginx-vim-syntax'
+Plug 'chr4/nginx.vim'
 Plug 'vim-scripts/httplog'
 
 " Json
 Plug 'leshill/vim-json'
-
-" Java
-Plug 'artur-shaik/vim-javacomplete2'
 
 " Protobuf
 Plug 'uarun/vim-protobuf'
@@ -142,36 +138,6 @@ let g:solarized_menu      =     0
 let g:gitgutter_enabled=1
 nnoremap <silent> <leader>df :GitGutterToggle<cr>
 let g:gitgutter_max_signs=500  " default value
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Syntastic (syntax checker)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-let g:syntastic_enable_balloons = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_python_flake8_args = '--max-line-length=80 ' .
-            \ '--max-complexity=10 --ignore=E111,E114,E121,E125,E126,E127,E128,E129,' .
-            \ 'E131,E133,E201,E202,E203,E211,E221,E222,E241,E251,E261,E303,E402,W503'
-
-let g:syntastic_mode_map = {
-            \ "mode": "active",
-            \ "active_filetypes": [],
-            \ "passive_filetypes": ["dart", "html"] }
-" Python
-let g:syntastic_python_checkers=['pyflakes']
-
-" Javascript
-let g:syntastic_javascript_checkers = ['jshint']
-
-" Go
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ycm
