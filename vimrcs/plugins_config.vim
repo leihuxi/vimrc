@@ -47,6 +47,7 @@ Plug 'mhinz/vim-startify'
 Plug 'amix/open_file_under_cursor.vim'
 Plug 'tpope/vim-commentary'
 Plug 'Raimondi/delimitMate'
+Plug 'junegunn/goyo.vim'
 
 " Program
 function! BuildYCM(info)
@@ -156,7 +157,7 @@ nnoremap <leader>gf :YcmForceCompileAndDiagnostics <CR>
 nnoremap <leader>gx :YcmCompleter FixIt<CR>
 nnoremap <leader>gc :YcmDiags<CR>
 
-let g:ycm_global_ycm_extra_conf = g:plugdir.'YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" let g:ycm_global_ycm_extra_conf = g:plugdir.'YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -420,20 +421,26 @@ let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
+let g:go_autodetect_gopath = 1
+let g:go_list_type = "quickfix"
+let g:go_highlight_extra_types = 1
+let g:go_highlight_generate_tags = 1
+
 if has("autocmd")
     " Vim-Go
-    autocmd FileType go nmap <leader>r <Plug>(go-run)
-    autocmd FileType go nmap <leader>b <Plug>(go-build)
-    autocmd FileType go nmap <leader>t <Plug>(go-test)
-    autocmd FileType go nmap <leader>c <Plug>(go-coverage)
+    autocmd FileType go nmap <leader>or <Plug>(go-run)
+    autocmd FileType go nmap <leader>ob <Plug>(go-build)
+    autocmd FileType go nmap <leader>ot <Plug>(go-test)
+    autocmd FileType go nmap <leader>oc <Plug>(go-coverage)
 
-    autocmd FileType go nmap <leader>ds <Plug>(go-def-split)
-    autocmd FileType go nmap <leader>dv <Plug>(go-def-vertical)
-    autocmd FileType go nmap <leader>dt <Plug>(go-def-tab)
-    autocmd FileType go nmap <leader>gb <Plug>(go-doc-browser)
-    autocmd FileType go nmap <leader>s <Plug>(go-implements)
-    autocmd FileType go nmap <leader>i <Plug>(go-info)
-    autocmd FileType go nmap <leader>e <Plug>(go-rename)
+    autocmd FileType go nmap <leader>os <Plug>(go-def-split)
+    autocmd FileType go nmap <leader>ov <Plug>(go-def-vertical)
+    autocmd FileType go nmap <leader>ot <Plug>(go-def-tab)
+    autocmd FileType go nmap <leader>od <Plug>(go-doc-browser)
+    autocmd FileType go nmap <leader>op <Plug>(go-implements)
+    autocmd FileType go nmap <leader>oi <Plug>(go-info)
+    autocmd FileType go nmap <leader>oe <Plug>(go-rename)
+    autocmd FileType go nmap <Leader>om <Plug>(go-metalinter)
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -445,7 +452,7 @@ let g:vim_json_syntax_conceal = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Color-coded
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:color_coded_filetypes = ['c', 'cc', 'cpp', 'objc']
+let g:color_coded_filetypes = ['c', 'cc', 'cpp', 'objc', 'go', 'sh']
 " Disable color_coded in diff mode
 if &diff
     let g:color_coded_enabled = 0
