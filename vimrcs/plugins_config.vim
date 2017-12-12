@@ -48,6 +48,7 @@ Plug 'amix/open_file_under_cursor.vim'
 Plug 'tpope/vim-commentary'
 Plug 'Raimondi/delimitMate'
 Plug 'junegunn/goyo.vim'
+Plug 'troydm/zoomwintab.vim'
 
 " Program
 function! BuildYCM(info)
@@ -70,11 +71,12 @@ endif
 
 Plug 'Valloric/ListToggle'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-Plug 'jsfaint/gen_tags.vim'
+Plug 'xolox/vim-easytags' | Plug 'xolox/vim-misc'
 Plug 'rhysd/vim-clang-format'
 Plug 'vim-scripts/a.vim'
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
+Plug 'metakirby5/codi.vim'
 " Snip
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
@@ -280,8 +282,8 @@ map  <leader>nf :NERDTreeFind<cr>
 let g:NERDTreeWinPos = "left"
 let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-let NERDTreeChDirMode=0
-let NERDTreeQuitOnOpen=1
+let NERDTreeChDirMode=1
+let NERDTreeQuitOnOpen=0
 let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
@@ -463,3 +465,5 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:chromatica#libclang_path=g:clangdir
 let g:chromatica#enable_at_startup=1
+let g:chromatica#highlight_feature_level=1
+let g:chromatica#responsive_mode=1
