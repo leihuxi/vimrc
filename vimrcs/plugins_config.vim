@@ -71,7 +71,7 @@ endif
 
 Plug 'Valloric/ListToggle'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-Plug 'xolox/vim-easytags' | Plug 'xolox/vim-misc'
+Plug 'jsfaint/gen_tags.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'vim-scripts/a.vim'
 Plug 'majutsushi/tagbar'
