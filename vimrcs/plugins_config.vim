@@ -7,6 +7,10 @@
 " => Plug Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:clangdir='/usr/lib/llvm-6.0/lib'
+if has("mac")
+  let g:clangdir='/usr/local/opt/llvm/lib'
+endif
+
 let g:rootdir='~/.vim_runtime/'
 let g:plugdir=g:rootdir.'plugged/'
 let g:tempdir=g:rootdir.'temp_dirs/'
