@@ -101,11 +101,8 @@ Plug 'tmux-plugins/vim-tmux'
 " Vim script
 Plug 'digitaltoad/vim-pug'
 
-" System language
-Plug 'nickhutchinson/vim-systemtap'
-
 "Go
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'}
 
 " Nginx
 Plug 'chr4/nginx.vim'
