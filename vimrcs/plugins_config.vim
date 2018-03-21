@@ -49,6 +49,7 @@ Plug 'tpope/vim-commentary'
 Plug 'Raimondi/delimitMate'
 Plug 'junegunn/goyo.vim'
 Plug 'troydm/zoomwintab.vim'
+Plug 'junegunn/vim-peekaboo'
 
 " Program
 function! BuildYCM(info)
