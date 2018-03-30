@@ -58,7 +58,7 @@ Plug 'junegunn/vim-peekaboo'
 " Program
 function! BuildYCM(info)
     if a:info.status == 'installed' || a:info.force
-        silent !(git submodule update --init --recursive ;./install.py --clang-completer --gocode-completer --tern-completer)
+        silent !(git submodule update --init --recursive ;./install.py --clang-completer --gocode-completer --java-completer)
     endif
 endfunction
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM')}
