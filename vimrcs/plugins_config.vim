@@ -68,7 +68,7 @@ if has("nvim")
 else
     function! BuildColorCoded(info)
         if a:info.status == 'installed' || a:info.force
-            silent !(mkdir build; cd build; cmake ..; make; make install)
+            silent !(mkdir build; cd build; cmake ..; make -j5; make install)
         endif
     endfunction
     Plug 'jeaye/color_coded', {'do' : function('BuildColorCoded')}
