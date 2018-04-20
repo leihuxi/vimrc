@@ -73,7 +73,6 @@ else
     endfunction
     Plug 'jeaye/color_coded', {'do' : function('BuildColorCoded')}
 endif
-
 Plug 'Valloric/ListToggle'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'jsfaint/gen_tags.vim'
@@ -94,6 +93,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'junegunn/gv.vim'
+Plug 'sodapopcan/vim-twiggy'
 
 " Ttmux
 Plug 'christoomey/vim-tmux-navigator'
