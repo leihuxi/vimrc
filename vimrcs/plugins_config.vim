@@ -114,6 +114,9 @@ Plug 'leshill/vim-json'
 " Protobuf
 Plug 'uarun/vim-protobuf'
 
+" Python
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
+
 call plug#end()
 
 """"""""""""""""""""""""""""""
@@ -162,19 +165,6 @@ nnoremap <leader>gc :YcmDiags<CR>
 
 let g:ycm_global_ycm_extra_conf = g:plugdir.'YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Indexer
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:indexer_ctagsCommandLineOptions="--c++-kinds=+p+l+x+c+d+e+f+g+m+n+s+t+u+v --fields=+iaSl --extra=+q "
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Gdb
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ConqueGdb_Leader = ";"
-let g:ConqueTerm_Color = 2         " 1: strip color after 200 lines, 2: always with color
-let g:ConqueTerm_CloseOnEnd = 1    " close conque when program ends running
-let g:ConqueTerm_StartMessages = 0 " display warning messages if conqueTerm is configured incorrectly
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Clang-Format
@@ -232,19 +222,6 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " Advanced customization using autoload functions
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
-
-" Replace the default dictionary completion with fzf-based fuzzy completion
-inoremap <expr> <c-x><c-k> fzf#complete('cat /usr/share/dict/words')
-
-function! s:make_sentence(lines)
-    return substitute(join(a:lines), '^.', '\=toupper(submatch(0))', '').'.'
-endfunction
-
-inoremap <expr> <c-x><c-s> fzf#complete({
-            \ 'source':  'cat /usr/share/dict/words',
-            \ 'reducer': function('<sid>make_sentence'),
-            \ 'options': '--multi --reverse --margin 15%,0',
-            \ 'left':    20})
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ListToggle
@@ -328,20 +305,6 @@ nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
 nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Ackprg
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Open Ack and put the cursor in the right position
-map <leader>g :Ack
-nmap <leader>gg :Ack<CR>
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-elseif executable('ack-grep')
-    let g:ackprg = "ack-grep --nocolor --nogroup --column"
-elseif executable('ack')
-    let g:ackprg = "ack --nocolor --nogroup --column"
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline#extensions#tabline#enabled = 1
@@ -365,22 +328,6 @@ nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <c-y> :TmuxNavigatePrevious<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => YankRing
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:yankring_history_dir = g:tempdir
-" this is so that single char deletes don't end up in the yankring
-let g:yankring_min_element_length = 2
-let g:yankring_window_height = 14
-nnoremap <leader>y :YRShow<CR>
-
-" this makes Y yank from the cursor to the end of the line, which makes more
-" sense than the default of yanking the whole current line (we can use yy for
-" that)
-function! YRRunAfterMaps()
-    nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
-endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => EasyMotion
