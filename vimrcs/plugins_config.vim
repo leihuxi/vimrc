@@ -85,8 +85,7 @@ Plug 'metakirby5/codi.vim'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " Markdown
-Plug 'iamcco/mathjax-support-for-mkdp'
-Plug 'iamcco/markdown-preview.vim'
+Plug 'suan/vim-instant-markdown'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -161,7 +160,7 @@ nnoremap <leader>gf :YcmForceCompileAndDiagnostics <CR>
 nnoremap <leader>gx :YcmCompleter FixIt<CR>
 nnoremap <leader>gc :YcmDiags<CR>
 
-" let g:ycm_global_ycm_extra_conf = g:plugdir.'YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = g:plugdir.'YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -456,7 +455,7 @@ let g:vim_json_syntax_conceal = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Color-coded
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:color_coded_filetypes = ['c', 'cc', 'cpp', 'objc', 'go', 'sh']
+let g:color_coded_filetypes = ['c', 'cc', 'cpp', 'objc', 'go', 'sh', 'py', 'java']
 " Disable color_coded in diff mode
 if &diff
     let g:color_coded_enabled = 0
@@ -469,3 +468,13 @@ let g:chromatica#libclang_path=g:clangdir
 let g:chromatica#enable_at_startup=1
 let g:chromatica#highlight_feature_level=1
 let g:chromatica#responsive_mode=1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Ale
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"use ycm for c && c++
+let g:ale_linters = {
+\ 'c': [],
+\ 'cpp': [],
+\ 'cc': [],
+\}
