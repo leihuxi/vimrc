@@ -51,9 +51,7 @@ Plug 'mhinz/vim-startify'
 Plug 'amix/open_file_under_cursor.vim'
 Plug 'tpope/vim-commentary'
 Plug 'Raimondi/delimitMate'
-Plug 'junegunn/goyo.vim'
 Plug 'troydm/zoomwintab.vim'
-Plug 'junegunn/vim-peekaboo'
 
 " Program
 function! BuildYCM(info)
@@ -80,7 +78,6 @@ Plug 'rhysd/vim-clang-format'
 Plug 'vim-scripts/a.vim'
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
-Plug 'metakirby5/codi.vim'
 " Snip
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
@@ -113,9 +110,6 @@ Plug 'leshill/vim-json'
 
 " Protobuf
 Plug 'uarun/vim-protobuf'
-
-" Python
-Plug 'python-mode/python-mode', { 'branch': 'develop' }
 
 call plug#end()
 
@@ -189,8 +183,8 @@ let g:clang_format#style_options = {
 nmap <Leader>C :ClangFormatAutoToggle<CR>
 if has("autocmd")
     " map to <Leader>cf in C++ code
-    autocmd FileType c,cpp,objc,java,py nnoremap <buffer><Leader>fcc :<C-u>ClangFormat<CR>
-    autocmd FileType c,cpp,objc,java,py vnoremap <buffer><Leader>fcc :ClangFormat<CR>
+    autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+    autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
