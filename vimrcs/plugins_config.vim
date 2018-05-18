@@ -101,10 +101,6 @@ Plug 'digitaltoad/vim-pug'
 "Go
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'}
 
-" Nginx
-Plug 'chr4/nginx.vim'
-Plug 'vim-scripts/httplog'
-
 " Json
 Plug 'leshill/vim-json'
 
