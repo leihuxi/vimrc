@@ -107,6 +107,14 @@ Plug 'leshill/vim-json'
 " Protobuf
 Plug 'uarun/vim-protobuf'
 
+" Nginx
+Plug 'chr4/nginx.vim'
+Plug 'vim-scripts/httplog'
+
+" PythonMode
+Plug 'python-mode/python-mode'
+
+
 call plug#end()
 
 """"""""""""""""""""""""""""""
