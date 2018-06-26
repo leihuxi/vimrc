@@ -112,7 +112,7 @@ Plug 'chr4/nginx.vim'
 Plug 'vim-scripts/httplog'
 
 " PythonMode
-Plug 'python-mode/python-mode'
+" Plug 'python-mode/python-mode'
 
 
 call plug#end()
@@ -415,11 +415,23 @@ let g:chromatica#highlight_feature_level=1
 let g:chromatica#responsive_mode=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Ale
+" => Syntastic (syntax checker)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "use ycm for c && c++
 let g:ale_linters = {
 \ 'c': [],
 \ 'cpp': [],
 \ 'cc': [],
+\ 'javascript': ['jshint'],
+\ 'python': ['flake8'],
+\ 'go': ['go', 'golint', 'errcheck']
 \}
+
+" Disabling highlighting
+let g:ale_set_highlights = 0
+
+" Only run linting when saving the file
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+
+
