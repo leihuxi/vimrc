@@ -74,10 +74,16 @@ endif
 Plug 'Valloric/ListToggle'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'jsfaint/gen_tags.vim'
-Plug 'rhysd/vim-clang-format'
 Plug 'vim-scripts/a.vim'
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
+
+" For Code Format
+" Plug 'rhysd/vim-clang-format'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
+
 " Snip
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
@@ -113,6 +119,8 @@ Plug 'vim-scripts/httplog'
 
 " PythonMode
 " Plug 'python-mode/python-mode'
+Plug 'metakirby5/codi.vim'
+Plug 'tell-k/vim-autopep8'
 
 
 call plug#end()
@@ -163,33 +171,6 @@ nnoremap <leader>gc :YcmDiags<CR>
 
 let g:ycm_global_ycm_extra_conf = g:plugdir.'YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Clang-Format
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:clang_format#style_options = {
-            \ "AllowShortIfStatementsOnASingleLine" : "false",
-            \ "AllowShortBlocksOnASingleLine" : "false",
-            \ "AllowShortFunctionsOnASingleLine" : "false",
-            \ "IndentWidth" : 4,
-            \ "UseTab" : "Never",
-            \ "ColumnLimit" : 150,
-            \ "BinPackParameters" : "true",
-            \ "BreakBeforeBraces" : "Allman",
-            \ "AccessModifierOffset" : -4,
-            \ "IndentCaseLabels" : "true",
-            \ "AlignAfterOpenBracket" : "Align",
-            \ "BreakBeforeBinaryOperators" : "false",
-            \ "BreakConstructorInitializersBeforeComma" : "true",
-            \ "ConstructorInitializerAllOnOneLineOrOnePerLine " : "false"}
-
-" Toggle auto formatting:
-nmap <Leader>C :ClangFormatAutoToggle<CR>
-if has("autocmd")
-    " map to <Leader>cf in C++ code
-    autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-    autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
-endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => FZF
@@ -434,4 +415,21 @@ let g:ale_set_highlights = 0
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Google codefmt
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Optional: Enable codefmt's default mappings on the <Leader>= prefix.
+call  glaive#Install()
+Glaive codefmt plugin[mappings]
+augroup autoformat_settings
+  " autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  " autocmd FileType dart AutoFormatBuffer dartfmt
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType gn AutoFormatBuffer gn
+  autocmd FileType html,css,json AutoFormatBuffer js-beautify
+  autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType python AutoFormatBuffer yapf
+  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+augroup END
 
