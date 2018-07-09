@@ -23,6 +23,7 @@ Plug 'vim-scripts/vimprj'
 " Man and Help
 Plug 'nhooyr/neoman.vim'
 Plug 'lifepillar/vim-cheat40'
+Plug 'dbeniamine/cheat.sh-vim'
 
 " Font and Corlor and Theme
 Plug 'powerline/fonts', {'do': './install.sh'}
@@ -118,9 +119,7 @@ Plug 'chr4/nginx.vim'
 Plug 'vim-scripts/httplog'
 
 " PythonMode
-" Plug 'python-mode/python-mode'
 Plug 'metakirby5/codi.vim'
-Plug 'tell-k/vim-autopep8'
 
 
 call plug#end()
