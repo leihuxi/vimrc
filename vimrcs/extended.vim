@@ -26,10 +26,8 @@ set guioptions-=R
 set guioptions-=l
 set guioptions-=L
 
-" Colorscheme
+colorscheme default
 set background=dark
-" colorscheme molokai
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Fast editing and reloading of vimrc configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
