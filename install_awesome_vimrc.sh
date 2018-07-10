@@ -7,8 +7,6 @@ if [ ! -f ~/.vim_runtime/autoload/plug.vim ]; then
     curl -fLo ~/.vim_runtime/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
-vim +PlugInstall +qall
-vim +PlugUpdate! +qall
 
 echo 'set runtimepath+=~/.vim_runtime
 
@@ -22,4 +20,6 @@ source ~/.vim_runtime/my_configs.vim
 catch
 endtry' > ~/.vimrc
 
+vim +PlugInstall +qall
+vim +PlugUpdate! +qall
 echo -e "\033[32mInstalled the Ultimate Vim configuration successfully! Enjoy :-)\033[0m"
