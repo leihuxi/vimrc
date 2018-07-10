@@ -19,8 +19,8 @@ vim +PlugInstall +qall
 vim +PlugUpdate! +qall
 
 echo "try
-source ~/.vim_runtime/my_configs.vim
 source ~/.vim_runtime/vimrcs/plugins_config.vim
+source ~/.vim_runtime/my_configs.vim
 catch
 endtry" >> ~/.vimrc
 

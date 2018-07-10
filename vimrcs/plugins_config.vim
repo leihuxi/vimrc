@@ -17,6 +17,8 @@ let g:tempdir=g:rootdir.'temp_dirs/'
 """"""""""""""""""""""""""""""
 " => Molokai
 """"""""""""""""""""""""""""""
+colorscheme molokai
+set background=dark
 let g:molokai_original=1
 let g:rehash256 = 1
 
