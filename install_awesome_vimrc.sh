@@ -3,11 +3,6 @@ set -e
 
 cd ~/.vim_runtime
 echo -e "\033[32mInstalling plugin,it will take some time\033[0m"
-if [ ! -f ~/.vim_runtime/autoload/plug.vim ]; then
-    curl -fLo ~/.vim_runtime/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
-
 echo "set runtimepath+=~/.vim_runtime
 source ~/.vim_runtime/vimrcs/basic.vim
 source ~/.vim_runtime/vimrcs/filetypes.vim

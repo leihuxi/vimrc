@@ -18,8 +18,7 @@ Plug 'nhooyr/neoman.vim'
 Plug 'lifepillar/vim-cheat40'
 Plug 'dbeniamine/cheat.sh-vim'
 
-" Font and Corlor and Theme
-Plug 'powerline/fonts', {'do': './install.sh'}
+" Corlor and Theme
 Plug 'luochen1990/rainbow'
 Plug 'tomasr/molokai'
 Plug 'altercation/vim-colors-solarized'
@@ -37,7 +36,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegu
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'mileszs/ack.vim'
 Plug 'mbbill/undotree'
 Plug 'google/vim-searchindex'
 Plug 'vim-scripts/matchit.zip'
@@ -53,7 +51,7 @@ function! BuildYCM(info)
         silent !(git submodule update --init --recursive ;./install.py --clang-completer --gocode-completer --java-completer)
     endif
 endfunction
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM')}
+Plug 'Valloric/YouCompleteMe', { 'for' : [ 'c', 'cpp', 'cc', 'go', 'py', 'java' ],  'do': function('BuildYCM')}
 
 if has("nvim")
     Plug 'arakashic/chromatica.nvim'
@@ -63,12 +61,12 @@ else
             silent !(mkdir build; cd build; cmake ..; make -j5; make install)
         endif
     endfunction
-    Plug 'jeaye/color_coded', {'do' : function('BuildColorCoded')}
+    Plug 'jeaye/color_coded', { 'for' : [ 'c', 'cpp', 'cc' ], 'do' : function('BuildColorCoded')}
 endif
 Plug 'Valloric/ListToggle'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-Plug 'jsfaint/gen_tags.vim'
-Plug 'vim-scripts/a.vim'
+Plug 'jsfaint/gen_tags.vim' , { 'for' : [ 'c', 'cpp', 'cc' ]}
+Plug 'vim-scripts/a.vim', { 'for' : [ 'c', 'cpp', 'cc' ] }
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
 
@@ -82,7 +80,7 @@ Plug 'google/vim-glaive'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " Markdown
-Plug 'suan/vim-instant-markdown'
+Plug 'suan/vim-instant-markdown', { 'for' : [ 'md' ] }
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -96,22 +94,19 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux'
 
 " Vim script
-Plug 'digitaltoad/vim-pug'
+Plug 'digitaltoad/vim-pug', { 'for' : ['vim'] }
 
 "Go
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'}
+Plug 'fatih/vim-go', { 'for' : [ 'go' ],  'do': ':GoInstallBinaries'}
 
 " Json
 Plug 'leshill/vim-json'
 
 " Protobuf
-Plug 'uarun/vim-protobuf'
+Plug 'uarun/vim-protobuf',  { 'for' : [ 'proto' ] }
 
 " Nginx
 Plug 'chr4/nginx.vim'
 Plug 'vim-scripts/httplog'
-
-" PythonMode
-Plug 'metakirby5/codi.vim'
 
 call plug#end()
