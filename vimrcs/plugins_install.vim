@@ -51,7 +51,7 @@ function! BuildYCM(info)
         silent !(git submodule update --init --recursive ;./install.py --clang-completer --gocode-completer --java-completer)
     endif
 endfunction
-Plug 'Valloric/YouCompleteMe', {'for' : [ 'c', 'cpp', 'cc', 'go', 'py', 'java' ],  'do': function('BuildYCM')}
+Plug 'Valloric/YouCompleteMe', {'for' : [ 'c', 'cpp', 'go', 'python', 'java' ],  'do': function('BuildYCM')}
 
 if has("nvim")
     Plug 'arakashic/chromatica.nvim'
@@ -61,12 +61,12 @@ else
             silent !(mkdir build; cd build; cmake ..; make -j5; make install)
         endif
     endfunction
-    Plug 'jeaye/color_coded', {'for' : [ 'c', 'cpp', 'cc' ], 'do' : function('BuildColorCoded')}
+    Plug 'jeaye/color_coded', {'for' : [ 'c', 'cpp' ], 'do' : function('BuildColorCoded')}
 endif
 Plug 'Valloric/ListToggle'
 Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
-Plug 'jsfaint/gen_tags.vim' , {'for' : [ 'c', 'cpp', 'cc' ]}
-Plug 'vim-scripts/a.vim', {'for' : [ 'c', 'cpp', 'cc' ]}
+Plug 'jsfaint/gen_tags.vim' , {'for' : [ 'c', 'cpp' ]}
+Plug 'vim-scripts/a.vim', {'for' : [ 'c', 'cpp' ]}
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
 
@@ -80,7 +80,7 @@ Plug 'google/vim-glaive'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " Markdown
-Plug 'suan/vim-instant-markdown', {'for' : [ 'md' ]}
+Plug 'suan/vim-instant-markdown', {'for' : [ 'markdown' ]}
 
 " Git
 Plug 'tpope/vim-fugitive'
