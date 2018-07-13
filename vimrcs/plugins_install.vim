@@ -85,7 +85,6 @@ Plug 'suan/vim-instant-markdown', {'for' : [ 'md' ]}
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'rhysd/conflict-marker.vim'
 Plug 'junegunn/gv.vim'
 Plug 'sodapopcan/vim-twiggy'
 
