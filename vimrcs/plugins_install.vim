@@ -51,7 +51,8 @@ function! BuildYCM(info)
         silent !(git submodule update --init --recursive ;./install.py --clang-completer --gocode-completer --java-completer --java-completer)
     endif
 endfunction
-Plug 'Valloric/YouCompleteMe', {'for' : [ 'c', 'cpp', 'go', 'python', 'java', 'javascript'],  'do': function('BuildYCM')}
+" Plug 'Valloric/YouCompleteMe', {'for' : [ 'c', 'cpp', 'go', 'python', 'java', 'javascript'],  'do': function('BuildYCM')}
+Plug 'Valloric/YouCompleteMe', {'do': function('BuildYCM')}
 
 if has("nvim")
     Plug 'arakashic/chromatica.nvim'
