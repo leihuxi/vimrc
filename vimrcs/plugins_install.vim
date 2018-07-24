@@ -8,7 +8,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:plugdir='~/.vim_runtime/plugged/'
 
-if empty(glob('~/.vim/autoload/plug.vim'))
+if empty(glob('~/.vim_runtime/autoload/plug.vim'))
   silent !curl -fLo ~/.vim_runtime/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
