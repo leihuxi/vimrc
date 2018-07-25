@@ -61,7 +61,7 @@ nnoremap <leader>gf :YcmForceCompileAndDiagnostics <CR>
 nnoremap <leader>gx :YcmCompleter FixIt<CR>
 nnoremap <leader>gc :YcmDiags<CR>
 
-let g:ycm_global_ycm_extra_conf = g:rootdir.'plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = g:rootdir.'plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
