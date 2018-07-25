@@ -123,7 +123,6 @@ let g:UltiSnipsJumpBackwardTrigger = "<left>"
 " => NerdTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>nn :NERDTreeToggle<CR>
-map  <C-e> <plug>NERDTreeTabsToggle<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 map  <leader>nb :NERDTreeFromBookmark<Space>
 map  <leader>nf :NERDTreeFind<cr>

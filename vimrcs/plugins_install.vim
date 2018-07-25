@@ -36,9 +36,8 @@ Plug 'godlygeek/csapprox'
 " General
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tpope/vim-repeat'
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'} | Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
@@ -69,12 +68,12 @@ else
             silent !(mkdir build; cd build; cmake ..; make -j5; make install)
         endif
     endfunction
-    Plug 'jeaye/color_coded', {'for' : [ 'c', 'cpp' ], 'do' : function('BuildColorCoded')}
+    Plug 'jeaye/color_coded', {'for': [ 'c', 'cpp' ], 'do': function('BuildColorCoded')}
 endif
 Plug 'Valloric/ListToggle'
 Plug 'rdnetto/YCM-Generator', {'branch': 'stable'}
-Plug 'jsfaint/gen_tags.vim' , {'for' : [ 'c', 'cpp' ]}
-Plug 'vim-scripts/a.vim', {'for' : [ 'c', 'cpp' ]}
+Plug 'jsfaint/gen_tags.vim' , {'for': [ 'c', 'cpp' ]}
+Plug 'vim-scripts/a.vim', {'for': [ 'c', 'cpp' ]}
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
 
@@ -88,7 +87,7 @@ Plug 'google/vim-glaive'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " Markdown
-Plug 'suan/vim-instant-markdown', {'for' : [ 'markdown' ]}
+Plug 'suan/vim-instant-markdown', {'for': [ 'markdown' ]}
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -101,18 +100,18 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux'
 
 " Vim script
-Plug 'digitaltoad/vim-pug', {'for' : [ 'vim' ]}
+Plug 'digitaltoad/vim-pug', {'for': [ 'vim' ]}
 
 "Go
-Plug 'fatih/vim-go', {'for' : [ 'go' ], 'do': ':GoInstallBinaries'}
+Plug 'fatih/vim-go', {'for': [ 'go' ], 'do': ':GoInstallBinaries'}
 
 " Json
-Plug 'leshill/vim-json', {'for' : [ 'json' ]}
+Plug 'leshill/vim-json', {'for': [ 'json' ]}
 
 " Protobuf
-Plug 'uarun/vim-protobuf',  {'for' : [ 'proto' ]}
+Plug 'uarun/vim-protobuf',  {'for': [ 'proto' ]}
 
 " Nginx
-Plug 'chr4/nginx.vim', {'for' : [ 'conf' ]}
+Plug 'chr4/nginx.vim', {'for': [ 'conf' ]}
 
 call plug#end()
