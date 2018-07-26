@@ -30,7 +30,6 @@ Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 
 " General
-Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tpope/vim-repeat'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
@@ -41,10 +40,11 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'mbbill/undotree'
 Plug 'google/vim-searchindex'
 Plug 'vim-scripts/matchit.zip'
-Plug 'amix/open_file_under_cursor.vim'
 Plug 'tpope/vim-commentary'
 Plug 'Raimondi/delimitMate'
 Plug 'troydm/zoomwintab.vim'
+" Plug 'MarcWeber/vim-addon-mw-utils'
+" Plug 'amix/open_file_under_cursor.vim'
 " Plug 'mhinz/vim-startify'
 
 " Program
