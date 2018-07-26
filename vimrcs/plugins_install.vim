@@ -98,16 +98,16 @@ Plug 'uarun/vim-protobuf',  {'for': [ 'proto' ]}
 Plug 'chr4/nginx.vim'
 
 " C family
-if has("nvim")
-    Plug 'arakashic/chromatica.nvim'
-else
-    function! BuildColorCoded(info)
-        if a:info.status == 'installed' || a:info.force
-            silent !(mkdir build; cd build; cmake ..; make -j5; make install)
-        endif
-    endfunction
-    " Plug 'jeaye/color_coded', {'for': [ 'c', 'cpp' ], 'do': function('BuildColorCoded')}
-endif
+" if has("nvim")
+"     Plug 'arakashic/chromatica.nvim'
+" else
+"     function! BuildColorCoded(info)
+"         if a:info.status == 'installed' || a:info.force
+"             silent !(mkdir build; cd build; cmake ..; make -j5; make install)
+"         endif
+"     endfunction
+"     Plug 'jeaye/color_coded', {'for': [ 'c', 'cpp' ], 'do': function('BuildColorCoded')}
+" endif
 Plug 'jsfaint/gen_tags.vim' , {'for': [ 'c', 'cpp' ]}
 Plug 'vim-scripts/a.vim', {'for': [ 'c', 'cpp' ]}
 
