@@ -56,7 +56,7 @@ endfunction
 " Plug 'Valloric/YouCompleteMe', {'for' : [ 'c', 'cpp', 'go', 'python', 'java', 'javascript'],  'do': function('BuildYCM')}
 Plug 'Valloric/YouCompleteMe', {'do': function('BuildYCM')}
 Plug 'Valloric/ListToggle'
-Plug 'rdnetto/YCM-Generator'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
 
