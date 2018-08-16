@@ -87,6 +87,7 @@ Plug 'suan/vim-instant-markdown', {'for': [ 'markdown' ]}
 
 "Go
 Plug 'fatih/vim-go', {'for': [ 'go' ], 'do': ':GoInstallBinaries'}
+Plug 'AndrewRadev/splitjoin.vim'
 
 " Json
 Plug 'leshill/vim-json', {'for': [ 'json' ]}
