@@ -231,6 +231,8 @@ let g:go_autodetect_gopath = 1
 let g:go_list_type = "quickfix"
 let g:go_highlight_extra_types = 1
 let g:go_highlight_generate_tags = 1
+let g:go_auto_sameids = 1
+let g:go_textobj_include_function_doc = 1
 
 if has("autocmd")
     " Vim-Go
@@ -280,9 +282,10 @@ let g:ale_linters = {
 \ 'c': [],
 \ 'cpp': [],
 \ 'cc': [],
-\ 'javascript': ['jshint'],
+\ 'javascript': ['eslint'],
 \ 'python': ['flake8'],
 \ 'go': ['go', 'golint', 'errcheck']
+\ 'html': ['alex']
 \}
 
 " Disabling highlighting
