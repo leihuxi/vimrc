@@ -28,7 +28,7 @@ let g:rehash256 = 1
 let g:gitgutter_enabled=1
 nnoremap <silent> <leader>df :GitGutterToggle<cr>
 let g:gitgutter_max_signs=500  " default value
-let g:gitgutter_highlight_lines = 1
+" let g:gitgutter_highlight_lines = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ycm
