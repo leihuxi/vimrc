@@ -24,9 +24,9 @@ Plug 'dbeniamine/cheat.sh-vim'
 " Corlor and Theme
 Plug 'tomasr/molokai'
 Plug 'vim-airline/vim-airline'
-" Plug 'luochen1990/rainbow'
+Plug 'luochen1990/rainbow'
 " Plug 'altercation/vim-colors-solarized'
-" Plug 'godlygeek/csapprox'
+Plug 'godlygeek/csapprox'
 " Plug 'vim-airline/vim-airline-themes'
 
 " General
@@ -43,9 +43,9 @@ Plug 'vim-scripts/matchit.zip'
 Plug 'tpope/vim-commentary'
 Plug 'Raimondi/delimitMate'
 Plug 'troydm/zoomwintab.vim'
-" Plug 'MarcWeber/vim-addon-mw-utils'
-" Plug 'amix/open_file_under_cursor.vim'
-" Plug 'mhinz/vim-startify'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'amix/open_file_under_cursor.vim'
+Plug 'mhinz/vim-startify'
 
 " Program
 function! BuildYCM(info)
@@ -53,7 +53,6 @@ function! BuildYCM(info)
         silent !(git submodule update --init --recursive ;./install.py --clang-completer --gocode-completer --java-completer)
     endif
 endfunction
-" Plug 'Valloric/YouCompleteMe', {'for' : [ 'c', 'cpp', 'go', 'python', 'java', 'javascript'],  'do': function('BuildYCM')}
 Plug 'Valloric/YouCompleteMe', {'do': function('BuildYCM')}
 Plug 'Valloric/ListToggle'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
@@ -72,8 +71,8 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'junegunn/gv.vim'
-Plug 'sodapopcan/vim-twiggy'
+" Plug 'junegunn/gv.vim'
+" plug 'sodapopcan/vim-twiggy'
 
 " Ttmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -83,7 +82,7 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'suan/vim-instant-markdown', {'for': [ 'markdown' ]}
 
 " Vim script
-" Plug 'digitaltoad/vim-pug', {'for': [ 'vim' ]}
+Plug 'digitaltoad/vim-pug', {'for': [ 'vim' ]}
 
 "Go
 Plug 'fatih/vim-go', {'for': [ 'go' ], 'do': ':GoInstallBinaries'}
@@ -99,16 +98,16 @@ Plug 'uarun/vim-protobuf',  {'for': [ 'proto' ]}
 Plug 'chr4/nginx.vim'
 
 " C family
-" if has("nvim")
-"     Plug 'arakashic/chromatica.nvim'
-" else
-"     function! BuildColorCoded(info)
-"         if a:info.status == 'installed' || a:info.force
-"             silent !(mkdir build; cd build; cmake ..; make -j5; make install)
-"         endif
-"     endfunction
-"     Plug 'jeaye/color_coded', {'for': [ 'c', 'cpp' ], 'do': function('BuildColorCoded')}
-" endif
+if has("nvim")
+    Plug 'arakashic/chromatica.nvim'
+else
+    function! BuildColorCoded(info)
+        if a:info.status == 'installed' || a:info.force
+            silent !(mkdir build; cd build; cmake ..; make -j5; make install)
+        endif
+    endfunction
+    Plug 'jeaye/color_coded', {'for': [ 'c', 'cpp' ], 'do': function('BuildColorCoded')}
+endif
 Plug 'jsfaint/gen_tags.vim' , {'for': [ 'c', 'cpp' ]}
 Plug 'vim-scripts/a.vim', {'for': [ 'c', 'cpp' ]}
 
