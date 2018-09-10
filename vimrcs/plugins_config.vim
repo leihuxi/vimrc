@@ -33,19 +33,19 @@ let g:gitgutter_max_signs=500  " default value
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ycm
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>gi :YcmCompleter GoToInclude<CR>
-nnoremap <leader>ge :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>go :YcmCompleter GoTo<CR>
-nnoremap <leader>gr :YcmCompleter GogoReferences<CR>
-nnoremap <leader>gw :YcmCompleter GetDoc<CR>
-nnoremap <leader>ga :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>gp :YcmCompleter GetParent<CR>
-nnoremap <leader>gt :YcmCompleter GetType<CR>
-nnoremap <leader>gz :YcmCompleter ClearCompilationFlagCache<CR>
-nnoremap <leader>gf :YcmForceCompileAndDiagnostics <CR>
-nnoremap <leader>gx :YcmCompleter FixIt<CR>
-nnoremap <leader>gc :YcmDiags<CR>
+nnoremap <leader>ji :YcmCompleter GoToInclude<CR>
+nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>jo :YcmCompleter GoTo<CR>
+nnoremap <leader>jr :YcmCompleter GogoReferences<CR>
+nnoremap <leader>jw :YcmCompleter GetDoc<CR>
+nnoremap <leader>ja :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>jp :YcmCompleter GetParent<CR>
+nnoremap <leader>jt :YcmCompleter GetType<CR>
+nnoremap <leader>jz :YcmCompleter ClearCompilationFlagCache<CR>
+nnoremap <leader>jf :YcmForceCompileAndDiagnostics <CR>
+nnoremap <leader>jx :YcmCompleter FixIt<CR>
+nnoremap <leader>jc :YcmDiags<CR>
 
 let g:ycm_global_ycm_extra_conf = g:rootdir.'plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -236,25 +236,25 @@ let g:go_textobj_include_function_doc = 1
 
 if has("autocmd")
     " Vim-Go
-    autocmd FileType go nmap <leader>or <Plug>(go-run)
-    autocmd FileType go nmap <leader>ob <Plug>(go-build)
-    autocmd FileType go nmap <leader>ot <Plug>(go-test)
-    autocmd FileType go nmap <leader>oc <Plug>(go-coverage)
+    autocmd FileType go nmap <leader>gr <Plug>(go-run)
+    autocmd FileType go nmap <leader>gb <Plug>(go-build)
+    autocmd FileType go nmap <leader>gt <Plug>(go-test)
+    autocmd FileType go nmap <leader>gc <Plug>(go-coverage)
 
-    autocmd FileType go nmap <leader>os <Plug>(go-def-split)
-    autocmd FileType go nmap <leader>ov <Plug>(go-def-vertical)
-    autocmd FileType go nmap <leader>ot <Plug>(go-def-tab)
-    autocmd FileType go nmap <leader>od <Plug>(go-doc-browser)
-    autocmd FileType go nmap <leader>op <Plug>(go-implements)
-    autocmd FileType go nmap <leader>oi <Plug>(go-info)
-    autocmd FileType go nmap <leader>oe <Plug>(go-rename)
-    autocmd FileType go nmap <Leader>om <Plug>(go-metalinter)
+    autocmd FileType go nmap <leader>gs <Plug>(go-def-split)
+    autocmd FileType go nmap <leader>gv <Plug>(go-def-vertical)
+    autocmd FileType go nmap <leader>gt <Plug>(go-def-tab)
+    autocmd FileType go nmap <leader>gd <Plug>(go-doc-browser)
+    autocmd FileType go nmap <leader>gp <Plug>(go-implements)
+    autocmd FileType go nmap <leader>gi <Plug>(go-info)
+    autocmd FileType go nmap <leader>ge <Plug>(go-rename)
+    autocmd FileType go nmap <Leader>gm <Plug>(go-metalinter)
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-json
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
+nmap <leader>pt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 let g:vim_json_syntax_conceal = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -279,14 +279,12 @@ let g:chromatica#responsive_mode=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "use ycm for c && c++
 let g:ale_linters = {
-\ 'c': [],
-\ 'cpp': [],
-\ 'cc': [],
 \ 'javascript': ['eslint'],
 \ 'python': ['flake8'],
 \ 'go': ['go', 'golint', 'errcheck']
 \ 'html': ['alex']
 \}
+let g:ale_linters_explicit = 1
 
 " Disabling highlighting
 let g:ale_set_highlights = 0
