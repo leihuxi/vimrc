@@ -33,10 +33,10 @@ let g:gitgutter_max_signs=500  " default value
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ycm
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>jj :YcmCompleter GoTo<CR>
 nnoremap <leader>ji :YcmCompleter GoToInclude<CR>
 nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>jo :YcmCompleter GoTo<CR>
 nnoremap <leader>jr :YcmCompleter GogoReferences<CR>
 nnoremap <leader>jw :YcmCompleter GetDoc<CR>
 nnoremap <leader>ja :YcmCompleter GoToDefinitionElseDeclaration<CR>
