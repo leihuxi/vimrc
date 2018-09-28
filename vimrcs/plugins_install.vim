@@ -57,7 +57,7 @@ Plug 'Valloric/YouCompleteMe', {'do': function('BuildYCM')}
 Plug 'Valloric/ListToggle'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'majutsushi/tagbar'
-Plug 'w0rp/ale', {'for': [ 'py', 'go', 'sh', 'python', 'java', 'javascript', 'html']}
+Plug 'w0rp/ale', {'for': [ 'go', 'sh', 'python', 'java', 'javascript', 'html']}
 
 " For Code Format
 " Plug 'rhysd/vim-clang-format'
@@ -110,6 +110,5 @@ else
 endif
 Plug 'jsfaint/gen_tags.vim' , {'for': [ 'c', 'cpp' ]}
 Plug 'vim-scripts/a.vim', {'for': [ 'c', 'cpp' ]}
-
 
 call plug#end()
