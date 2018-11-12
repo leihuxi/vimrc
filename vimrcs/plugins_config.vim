@@ -6,7 +6,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plug Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:clangdir='/usr/lib/llvm-6.0/lib'
+let g:clangdir='/usr/lib/clang/7.0.0/lib/linux/'
 if has("mac")
   let g:clangdir='/usr/local/opt/llvm/lib'
 endif
