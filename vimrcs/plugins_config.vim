@@ -57,14 +57,20 @@ let g:fzf_command_prefix = 'Fzf'
 map <leader>f  :FZF<cr>
 map <leader>F  :FZF!<cr>
 map <leader>o  :FzfBuffers<cr>
+
 map <leader>fa :FzfAg <c-r><c-w><cr>
 map <leader>fm :FzfMaps<cr>
 map <leader>fk :FzfMarks<cr>
 map <leader>fc :FzfCommits<cr>
+map <leader>fb :FzfBCommits<cr>
 map <leader>fh :FzfHistory<cr>
-map <leader>fs :FzfGFiles?<cr>
-map <leader>fn :FzfSnippets<cr>
+map <leader>fg :FzfGFiles?<cr>
+map <leader>fe :FzfFiles?<cr>
+map <leader>fs :FzfSnippets<cr>
 map <leader>ft :FzfTags<cr>
+map <leader>fl :FzfLines<cr>
+map <leader>fo :FzfColors<cr>
+map <leader>fd :FzfCommands<cr>
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
