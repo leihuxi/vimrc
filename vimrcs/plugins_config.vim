@@ -57,14 +57,20 @@ let g:fzf_command_prefix = 'Fzf'
 map <leader>f  :FZF<cr>
 map <leader>F  :FZF!<cr>
 map <leader>o  :FzfBuffers<cr>
+
 map <leader>fa :FzfAg <c-r><c-w><cr>
 map <leader>fm :FzfMaps<cr>
 map <leader>fk :FzfMarks<cr>
-map <leader>fc :FzfCommits<cr>
+map <leader>fi :FzfCommits<cr>
+map <leader>fb :FzfBCommits<cr>
 map <leader>fh :FzfHistory<cr>
-map <leader>fs :FzfGFiles?<cr>
-map <leader>fn :FzfSnippets<cr>
+map <leader>fg :FzfGFiles?<cr>
+map <leader>fe :FzfFiles?<cr>
+map <leader>fs :FzfSnippets<cr>
 map <leader>ft :FzfTags<cr>
+map <leader>fl :FzfLines<cr>
+map <leader>fo :FzfColors<cr>
+map <leader>fc :FzfCommands<cr>
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -279,11 +285,14 @@ let g:chromatica#responsive_mode=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "use ycm for c && c++
 let g:ale_linters = {
+\ 'c': [''],
+\ 'cpp': [''],
 \ 'javascript': ['eslint'],
 \ 'python': ['flake8'],
-\ 'go': ['go', 'golint', 'errcheck']
+\ 'go': ['go', 'golint', 'errcheck'],
 \ 'html': ['alex']
 \}
+
 let g:ale_linters_explicit = 1
 
 " Disabling highlighting
@@ -299,6 +308,7 @@ let g:ale_lint_on_enter = 0
 call glaive#Install()
 " Optional: Enable codefmt's default mappings on the <Leader>= prefix.
 Glaive codefmt plugin[mappings]
+let b:codefmt_formatter = 1
 augroup autoformat_settings
   " autocmd FileType bzl AutoFormatBuffer buildifier
   autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
@@ -310,3 +320,9 @@ augroup autoformat_settings
   autocmd FileType python AutoFormatBuffer yapf
   " Alternative: autocmd FileType python AutoFormatBuffer autopep8
 augroup END
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim Note
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:notes_directories = ['~/Documents/Notes']
+let g:notes_suffix = '.md'
