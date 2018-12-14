@@ -78,6 +78,7 @@ Plug 'airblade/vim-gitgutter'
 " Ttmux
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'benmills/vimux'
 
 " Markdown
 Plug 'suan/vim-instant-markdown', {'for': [ 'markdown' ]}
