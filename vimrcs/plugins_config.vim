@@ -6,7 +6,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plug Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:clangdir='/usr/lib/clang/7.0.0/lib/linux/'
 if has("mac")
   let g:clangdir='/usr/local/opt/llvm/lib'
 endif
@@ -275,7 +274,9 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Chromatica
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:chromatica#libclang_path=g:clangdir
+if has("mac")
+    let g:chromatica#libclang_path=g:clangdir
+endif
 let g:chromatica#enable_at_startup=1
 let g:chromatica#highlight_feature_level=1
 let g:chromatica#responsive_mode=1
@@ -293,7 +294,7 @@ let g:ale_linters = {
 \ 'html': ['alex']
 \}
 
-let g:ale_linters_explicit = 1
+" let g:ale_linters_explicit = 1
 
 " Disabling highlighting
 let g:ale_set_highlights = 0
@@ -326,3 +327,12 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:notes_directories = ['~/Documents/Notes']
 let g:notes_suffix = '.md'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => LanguageClient-neovim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:LanguageClient_serverCommands = {
+\ 'cpp': ['/usr/bin/cquery', 
+\ '--log-file=/tmp/cq.log', 
+\ '--init={"cacheDirectory":"/tmp/cquery/"}']
+\ }

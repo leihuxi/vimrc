@@ -9,13 +9,13 @@
 let g:plugdir='~/.vim_runtime/plugged/'
 
 if empty(glob('~/.vim_runtime/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim_runtime/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    silent !curl -fLo ~/.vim_runtime/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin(g:plugdir)
-let g:plug_window = 'enew' 
+let g:plug_window = 'enew'
 
 " Man and Help
 Plug 'nhooyr/neoman.vim'
@@ -58,13 +58,14 @@ Plug 'Valloric/ListToggle'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale', {'for': [ 'go', 'sh', 'python', 'java', 'javascript', 'html']}
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 
 " For Code Format
 " Plug 'rhysd/vim-clang-format'
-" Plug 'Chiel92/vim-autoformat'
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
-Plug 'google/vim-glaive'
+Plug 'Chiel92/vim-autoformat'
+" Plug 'google/vim-maktaba'
+" Plug 'google/vim-codefmt'
+" Plug 'google/vim-glaive'
 
 " Snip
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -112,8 +113,9 @@ else
 endif
 Plug 'jsfaint/gen_tags.vim' , {'for': [ 'c', 'cpp' ]}
 Plug 'vim-scripts/a.vim', {'for': [ 'c', 'cpp' ]}
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 " Todo
-Plug 'xolox/vim-misc' | Plug 'xolox/vim-notes' 
+Plug 'xolox/vim-misc' | Plug 'xolox/vim-notes'
 
 call plug#end()
