@@ -53,12 +53,12 @@ function! BuildYCM(info)
         silent !(git submodule update --init --recursive ;./install.py --clang-completer --gocode-completer --java-completer)
     endif
 endfunction
-Plug 'Valloric/YouCompleteMe', {'do': function('BuildYCM')}
 Plug 'Valloric/ListToggle'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale', {'for': [ 'go', 'sh', 'python', 'java', 'javascript', 'html']}
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+" Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+Plug 'Valloric/YouCompleteMe', {'do': function('BuildYCM')}
 
 " For Code Format
 " Plug 'rhysd/vim-clang-format'
