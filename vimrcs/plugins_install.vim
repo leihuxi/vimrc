@@ -25,8 +25,8 @@ Plug 'dbeniamine/cheat.sh-vim'
 Plug 'tomasr/molokai'
 Plug 'vim-airline/vim-airline'
 Plug 'luochen1990/rainbow'
-" Plug 'altercation/vim-colors-solarized'
 Plug 'godlygeek/csapprox'
+" Plug 'altercation/vim-colors-solarized'
 " Plug 'vim-airline/vim-airline-themes'
 
 " General
@@ -46,26 +46,22 @@ Plug 'troydm/zoomwintab.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'amix/open_file_under_cursor.vim'
 Plug 'mhinz/vim-startify'
+Plug 'machakann/vim-highlightedyank'
 
 " Program
 function! BuildYCM(info)
     if a:info.status == 'installed' || a:info.force
-        silent !(git submodule update --init --recursive ;./install.py --clang-completer --gocode-completer --java-completer)
+        silent !(git submodule update --init --recursive ;./install.py --clang-completer --clangd-completer --gocode-completer --java-completer --clang-tidy --core-tests)
     endif
 endfunction
 Plug 'Valloric/ListToggle'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale', {'for': [ 'go', 'sh', 'python', 'java', 'javascript', 'html']}
-" Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'Valloric/YouCompleteMe', {'do': function('BuildYCM')}
 
 " For Code Format
-" Plug 'rhysd/vim-clang-format'
 Plug 'Chiel92/vim-autoformat'
-" Plug 'google/vim-maktaba'
-" Plug 'google/vim-codefmt'
-" Plug 'google/vim-glaive'
 
 " Snip
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'

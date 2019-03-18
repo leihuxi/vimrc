@@ -282,20 +282,6 @@ let g:chromatica#highlight_feature_level=1
 let g:chromatica#responsive_mode=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => LanguageClient-neovim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:LanguageClient_serverStderr = '/tmp/clangd.stderr'
-let g:LanguageClient_serverCommands = {
-  \ 'cpp': ['clangd'],
-  \ 'c': ['clangd'],
-  \ }
-nnoremap <leader>gm :call LanguageClient_contextMenu()<CR>
-" Or map each action separately
-nnoremap <leader>gk :call LanguageClient#textDocument_hover()<CR>
-nnoremap <leader>gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <leader>gr :call LanguageClient#textDocument_rename()<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ale(syntax checker)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "use ycm for c && c++
