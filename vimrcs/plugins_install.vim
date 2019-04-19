@@ -112,6 +112,6 @@ Plug 'vim-scripts/a.vim', {'for': [ 'c', 'cpp' ]}
 Plug 'octol/vim-cpp-enhanced-highlight'
 
 " Todo
-Plug 'xolox/vim-misc' | Plug 'xolox/vim-notes'
+" Plug 'xolox/vim-misc' | Plug 'xolox/vim-notes'
 
 call plug#end()
