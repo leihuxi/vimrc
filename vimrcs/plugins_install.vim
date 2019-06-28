@@ -26,6 +26,7 @@ Plug 'tomasr/molokai'
 Plug 'vim-airline/vim-airline'
 Plug 'luochen1990/rainbow'
 Plug 'godlygeek/csapprox'
+Plug 'liuchengxu/space-vim-dark'
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'vim-airline/vim-airline-themes'
 
@@ -47,6 +48,7 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'amix/open_file_under_cursor.vim'
 Plug 'mhinz/vim-startify'
 Plug 'machakann/vim-highlightedyank'
+" Plug 'kassio/neoterm'
 
 " Program
 function! BuildYCM(info)
@@ -58,6 +60,8 @@ Plug 'Valloric/ListToggle'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale', {'for': [ 'go', 'sh', 'python', 'java', 'javascript', 'html']}
+" Plug 'Shougo/echodoc.vim'
+" Plug 'neomake/neomake'
 Plug 'Valloric/YouCompleteMe', {'do': function('BuildYCM')}
 
 " For Code Format
@@ -96,6 +100,9 @@ Plug 'uarun/vim-protobuf',  {'for': [ 'proto' ]}
 " Nginx
 Plug 'chr4/nginx.vim'
 
+"Rust
+Plug 'rust-lang/rust.vim'
+
 " C family
 if has("nvim")
     Plug 'arakashic/chromatica.nvim'
@@ -114,4 +121,9 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 " Todo
 " Plug 'xolox/vim-misc' | Plug 'xolox/vim-notes'
 
+" Android
+" Plug 'hsanson/vim-android'
+
+" Cmake
+" Plug 'jalcine/cmake.vim'
 call plug#end()
