@@ -84,8 +84,8 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'benmills/vimux'
 
 " Markdown
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown', {'for': [ 'markdown' ]}
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown', {'for': [ 'markdown' ]}
 " Plug 'suan/vim-instant-markdown', {'for': [ 'markdown' ]}
 
 " Vim script
