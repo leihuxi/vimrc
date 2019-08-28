@@ -116,7 +116,7 @@ else
             silent !(mkdir build; cd build; cmake ..; make -j5; make install)
         endif
     endfunction
-    Plug 'jeaye/color_coded', {'do': function('BuildColorCoded')}
+    " Plug 'jeaye/color_coded', {'do': function('BuildColorCoded')}
 endif
 Plug 'jsfaint/gen_tags.vim' , {'for': [ 'c', 'cpp' ]}
 Plug 'vim-scripts/a.vim', {'for': [ 'c', 'cpp' ]}
