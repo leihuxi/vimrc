@@ -53,7 +53,7 @@ Plug 'machakann/vim-highlightedyank'
 " Program
 function! BuildYCM(info)
     if a:info.status == 'installed' || a:info.force
-        silent !(git submodule update --init --recursive ;./install.py --clang-completer --clangd-completer --gocode-completer --java-completer --clang-tidy --core-tests)
+        silent !(git submodule update --init --recursive ;./install.py --clang-completer --clangd-completer --rust-completer --gocode-completer --java-completer --clang-tidy --core-tests)
     endif
 endfunction
 Plug 'Valloric/ListToggle'
@@ -83,7 +83,9 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'benmills/vimux'
 
 " Markdown
-Plug 'suan/vim-instant-markdown', {'for': [ 'markdown' ]}
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown', {'for': [ 'markdown' ]}
+" Plug 'suan/vim-instant-markdown', {'for': [ 'markdown' ]}
 
 " Vim script
 Plug 'digitaltoad/vim-pug', {'for': [ 'vim' ]}
