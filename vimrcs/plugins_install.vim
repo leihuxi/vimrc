@@ -48,12 +48,13 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'amix/open_file_under_cursor.vim'
 Plug 'mhinz/vim-startify'
 Plug 'machakann/vim-highlightedyank'
+Plug 'tpope/vim-unimpaired'
 " Plug 'kassio/neoterm'
 
 " Program
 function! BuildYCM(info)
     if a:info.status == 'installed' || a:info.force
-        silent !(git submodule update --init --recursive ;./install.py --clang-completer --clangd-completer --rust-completer --gocode-completer --java-completer --clang-tidy --core-tests)
+        silent !(git submodule update --init --recursive ;./install.py --clang-completer --clangd-completer --rust-completer --gocode-completer --java-completer --clang-tidy --core-tests --system-libclang)
     endif
 endfunction
 Plug 'Valloric/ListToggle'
@@ -112,10 +113,10 @@ if has("nvim")
 else
     function! BuildColorCoded(info)
         if a:info.status == 'installed' || a:info.force
-            silent !(mkdir build; cd build; cmake ..; make -j5; make install)
+            silent !(cmake -H. -Bbuild -DCMAKE_VERBOSE_MAKEFILE:BOOL=OFF -DDOWNLOAD_CLANG=OFF; make -j4 -Cbuild install)
         endif
     endfunction
-    " Plug 'jeaye/color_coded', {'do': function('BuildColorCoded'), 'for' : ['c', 'cpp']}
+    Plug 'jeaye/color_coded', {'do': function('BuildColorCoded'), 'for' : ['c', 'cpp']}
 endif
 Plug 'jsfaint/gen_tags.vim' , {'for': [ 'c', 'cpp' ]}
 Plug 'vim-scripts/a.vim', {'for': [ 'c', 'cpp' ]}
