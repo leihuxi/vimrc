@@ -17,10 +17,6 @@ endif
 call plug#begin(g:plugdir)
 let g:plug_window = 'enew'
 
-" Man and Help
-Plug 'nhooyr/neoman.vim'
-Plug 'dbeniamine/cheat.sh-vim'
-
 " Corlor and Theme
 Plug 'tomasr/molokai'
 Plug 'vim-airline/vim-airline'
@@ -116,10 +112,10 @@ else
             silent !(cmake -H. -Bbuild -DCMAKE_VERBOSE_MAKEFILE:BOOL=OFF -DDOWNLOAD_CLANG=OFF; make -j4 -Cbuild install)
         endif
     endfunction
-    Plug 'jeaye/color_coded', {'do': function('BuildColorCoded'), 'for' : ['c', 'cpp']}
+    " Plug 'jeaye/color_coded', {'do': function('BuildColorCoded'), 'for' : ['c', 'cpp']}
 endif
 Plug 'jsfaint/gen_tags.vim' , {'for': [ 'c', 'cpp' ]}
-Plug 'vim-scripts/a.vim', {'for': [ 'c', 'cpp' ]}
+Plug 'derekwyatt/vim-fswitch', {'for': [ 'c', 'cpp' ]}
 Plug 'octol/vim-cpp-enhanced-highlight'
 
 " Todo

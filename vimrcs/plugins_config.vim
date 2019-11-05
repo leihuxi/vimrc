@@ -7,7 +7,7 @@
 " => Plug Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("mac")
-  let g:clangdir='/usr/local/opt/llvm/lib'
+    let g:clangdir='/usr/local/opt/llvm/lib'
 endif
 
 let g:rootdir='~/.vim_runtime/'
@@ -54,9 +54,9 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This is the default extra key bindings
 let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+            \ 'ctrl-t': 'tab split',
+            \ 'ctrl-x': 'split',
+            \ 'ctrl-v': 'vsplit' }
 
 " Default fzf layout
 " - down / up / left / right
@@ -69,19 +69,19 @@ let g:fzf_layout = { 'window': '10new' }
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+            \ { 'fg':      ['fg', 'Normal'],
+            \ 'bg':      ['bg', 'Normal'],
+            \ 'hl':      ['fg', 'Comment'],
+            \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+            \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+            \ 'hl+':     ['fg', 'Statement'],
+            \ 'info':    ['fg', 'PreProc'],
+            \ 'border':  ['fg', 'Ignore'],
+            \ 'prompt':  ['fg', 'Conditional'],
+            \ 'pointer': ['fg', 'Exception'],
+            \ 'marker':  ['fg', 'Keyword'],
+            \ 'spinner': ['fg', 'Label'],
+            \ 'header':  ['fg', 'Comment'] }
 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -130,20 +130,22 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
 " Fzf Tip
-autocmd! FileType fzf
-autocmd  FileType fzf set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+if has("autocmd")
+    autocmd! FileType fzf
+    autocmd  FileType fzf set laststatus=0 noshowmode noruler
+                \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
-function! s:fzf_statusline()
-  " Override statusline as you like
-  highlight fzf1 ctermfg=161 ctermbg=251
-  highlight fzf2 ctermfg=23 ctermbg=251
-  highlight fzf3 ctermfg=237 ctermbg=251
-  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
-endfunction
+    function! s:fzf_statusline()
+        " Override statusline as you like
+        highlight fzf1 ctermfg=161 ctermbg=251
+        highlight fzf2 ctermfg=23 ctermbg=251
+        highlight fzf3 ctermfg=237 ctermbg=251
+        setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+    endfunction
 
-autocmd! User FzfStatusLine call <SID>fzf_statusline()
- 
+    autocmd! User FzfStatusLine call <SID>fzf_statusline()
+endif
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ListToggle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -187,8 +189,8 @@ let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 let NERDTreeHighlightCursorline=1
 let NERDTreeShowLineNumbers=1
-let NERDTreeCaseSensitiveSort=0 
-let NERDTreeSortOrder=['\/$', '*', '[[-timestamp]]'] 
+let NERDTreeCaseSensitiveSort=0
+let NERDTreeSortOrder=['\/$', '*', '[[-timestamp]]']
 let g:nerdtree_tabs_open_on_gui_startup=0
 
 if has("autocmd")
@@ -349,13 +351,13 @@ let g:chromatica#responsive_mode=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "use ycm for c && c++
 let g:ale_linters = {
-\ 'c': [''],
-\ 'cpp': [''],
-\ 'javascript': ['eslint'],
-\ 'python': ['flake8'],
-\ 'go': ['go', 'golint', 'errcheck'],
-\ 'html': ['alex']
-\}
+            \ 'c': [''],
+            \ 'cpp': [''],
+            \ 'javascript': ['eslint'],
+            \ 'python': ['flake8'],
+            \ 'go': ['go', 'golint', 'errcheck'],
+            \ 'html': ['alex']
+            \}
 
 " let g:ale_linters_explicit = 1
 
@@ -376,17 +378,17 @@ let g:notes_suffix = '.md'
 " => NerdTree Git Tab
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
+            \ "Modified"  : "✹",
+            \ "Staged"    : "✚",
+            \ "Untracked" : "✭",
+            \ "Renamed"   : "➜",
+            \ "Unmerged"  : "═",
+            \ "Deleted"   : "✖",
+            \ "Dirty"     : "✗",
+            \ "Clean"     : "✔︎",
+            \ 'Ignored'   : '☒',
+            \ "Unknown"   : "?"
+            \ }
 
 let g:android_sdk_path = '~/work/Android/Sdk/ndk-bundle'
 
@@ -394,3 +396,18 @@ let g:android_sdk_path = '~/work/Android/Sdk/ndk-bundle'
 " => Rust
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:rust_clip_command = 'xclip -selection clipboard'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim-fswitch
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Switch to the file and load it into the current window >
+nmap <silent> <Leader>a :FSHere<cr>
+
+if has("autocmd")
+    augroup mycppfiles
+        au!
+        au BufEnter *.h let b:fswitchdst  = 'cpp,cc,C,c'
+        au BufEnter *.cc let b:fswitchdst  = 'hh,hpp,h'
+        au BufEnter *.h let b:fswitchlocs = 'reg:/include/src/,reg:/include.*/src/'
+    augroup END
+endif
