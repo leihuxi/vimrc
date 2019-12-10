@@ -45,12 +45,19 @@ Plug 'amix/open_file_under_cursor.vim'
 Plug 'mhinz/vim-startify'
 Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-unimpaired'
-" Plug 'kassio/neoterm'
+Plug 'kassio/neoterm'
+Plug 'brooth/far.vim'
+if has("nvim")
+    Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
+    Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'zchee/nvim-go', { 'do': 'make'}
+endif
+
 
 " Program
 function! BuildYCM(info)
     if a:info.status == 'installed' || a:info.force
-        silent !(git submodule update --init --recursive ;./install.py --clang-completer --clangd-completer --rust-completer --gocode-completer --java-completer --clang-tidy --core-tests --system-libclang)
+        silent !(git submodule update --init --recursive ;./install.py --clang-completer --clangd-completer --go-completer --rust-completer --java-completer --clang-tidy --core-tests) 
     endif
 endfunction
 Plug 'Valloric/ListToggle'
@@ -58,7 +65,7 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale', {'for': [ 'go', 'sh', 'python', 'java', 'javascript', 'html']}
 " Plug 'Shougo/echodoc.vim'
-" Plug 'neomake/neomake'
+Plug 'neomake/neomake'
 Plug 'Valloric/YouCompleteMe', {'do': function('BuildYCM')}
 Plug 'zxqfl/tabnine-vim'
 
@@ -71,6 +78,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'christoomey/vim-conflicted'
 " Plug 'junegunn/gv.vim'
 " plug 'sodapopcan/vim-twiggy'
 
@@ -82,6 +90,18 @@ Plug 'benmills/vimux'
 " Markdown
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown', {'for': [ 'markdown' ]}
+function! BuildComposer(info)
+    if a:info.status != 'unchanged' || a:info.force
+        if has('nvim')
+            !cargo build --release --locked
+        else
+            !cargo build --release --locked --no-default-features --features json-rpc
+        endif
+    endif
+endfunction
+
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') , 'for': [ 'markdown' ]}
+
 " Plug 'suan/vim-instant-markdown', {'for': [ 'markdown' ]}
 
 " Vim script
@@ -104,19 +124,9 @@ Plug 'chr4/nginx.vim'
 Plug 'rust-lang/rust.vim'
 
 " C family
-if has("nvim")
-    Plug 'arakashic/chromatica.nvim'
-else
-    function! BuildColorCoded(info)
-        if a:info.status == 'installed' || a:info.force
-            silent !(cmake -H. -Bbuild -DCMAKE_VERBOSE_MAKEFILE:BOOL=OFF -DDOWNLOAD_CLANG=OFF; make -j4 -Cbuild install)
-        endif
-    endfunction
-    " Plug 'jeaye/color_coded', {'do': function('BuildColorCoded'), 'for' : ['c', 'cpp']}
-endif
+Plug 'octol/vim-cpp-enhanced-highlight', {'for': [ 'c', 'cpp' ]}
 Plug 'jsfaint/gen_tags.vim' , {'for': [ 'c', 'cpp' ]}
 Plug 'derekwyatt/vim-fswitch', {'for': [ 'c', 'cpp' ]}
-Plug 'octol/vim-cpp-enhanced-highlight'
 
 " Todo
 " Plug 'xolox/vim-misc' | Plug 'xolox/vim-notes'
