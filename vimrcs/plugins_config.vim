@@ -36,12 +36,13 @@ nnoremap <leader>jj :YcmCompleter GoTo<CR>
 nnoremap <leader>ji :YcmCompleter GoToInclude<CR>
 nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>jr :YcmCompleter GogoReferences<CR>
+nnoremap <leader>jr :YcmCompleter GoToReferences<CR>
 nnoremap <leader>jw :YcmCompleter GetDoc<CR>
 nnoremap <leader>ja :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>jp :YcmCompleter GetParent<CR>
 nnoremap <leader>jt :YcmCompleter GetType<CR>
 nnoremap <leader>jz :YcmCompleter ClearCompilationFlagCache<CR>
+nnoremap <leader>jn :YcmCompleter RefactorRename<space>
 nnoremap <leader>jf :YcmForceCompileAndDiagnostics <CR>
 nnoremap <leader>jx :YcmCompleter FixIt<CR>
 nnoremap <leader>jc :YcmDiags<CR>
@@ -113,7 +114,8 @@ map <leader>ft :FzfTags<cr>
 map <leader>fl :FzfLines<cr>
 map <leader>fo :FzfColors<cr>
 map <leader>fc :FzfCommands<cr>
-map <leader>fd :FzfAg<CR>
+map <leader>fd :FzfAg<cr>
+map <leader>fr :FzfRg<cr>
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -411,3 +413,8 @@ if has("autocmd")
         au BufEnter *.h let b:fswitchlocs = 'reg:/include/src/,reg:/include.*/src/'
     augroup END
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" => UltiSnips                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:UltiSnipsSnippetsDir         = g:rootdir.'/UltiSnips/'

@@ -65,8 +65,8 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale', {'for': [ 'go', 'sh', 'python', 'java', 'javascript', 'html']}
 " Plug 'Shougo/echodoc.vim'
-Plug 'neomake/neomake'
 Plug 'Valloric/YouCompleteMe', {'do': function('BuildYCM')}
+Plug 'Valloric/vim-valloric-colorscheme'
 Plug 'zxqfl/tabnine-vim'
 
 " For Code Format
