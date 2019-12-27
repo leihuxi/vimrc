@@ -50,7 +50,7 @@ Plug 'brooth/far.vim'
 if has("nvim")
     Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
     Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'zchee/nvim-go', { 'do': 'make'}
+    Plug 'arakashic/chromatica.nvim'
 endif
 
 
@@ -90,19 +90,8 @@ Plug 'benmills/vimux'
 " Markdown
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown', {'for': [ 'markdown' ]}
-function! BuildComposer(info)
-    if a:info.status != 'unchanged' || a:info.force
-        if has('nvim')
-            !cargo build --release --locked
-        else
-            !cargo build --release --locked --no-default-features --features json-rpc
-        endif
-    endif
-endfunction
-
-Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') , 'for': [ 'markdown' ]}
-
-" Plug 'suan/vim-instant-markdown', {'for': [ 'markdown' ]}
+Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.vim'
 
 " Vim script
 Plug 'digitaltoad/vim-pug', {'for': [ 'vim' ]}

@@ -19,4 +19,6 @@ source ~/.vim_runtime/my_configs.vim
 catch
 endtry" >> ~/.vimrc
 
+ln -s ~/.vim_runtime ~/.config/nvim
+ln -s ~/.vimrc  ~/.vim_runtime/init.vim
 echo -e "\033[32mInstalled the Ultimate Vim configuration successfully! Enjoy :-)\033[0m"
