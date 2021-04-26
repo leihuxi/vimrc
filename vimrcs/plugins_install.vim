@@ -45,19 +45,18 @@ Plug 'amix/open_file_under_cursor.vim'
 Plug 'mhinz/vim-startify'
 Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-unimpaired'
-Plug 'kassio/neoterm'
 Plug 'brooth/far.vim'
 if has("nvim")
     Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
     Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'arakashic/chromatica.nvim'
+    " Plug 'arakashic/chromatica.nvim'
 endif
 
 
 " Program
 function! BuildYCM(info)
     if a:info.status == 'installed' || a:info.force
-        silent !(git submodule update --init --recursive ;./install.py --clang-completer --clangd-completer --go-completer --rust-completer --java-completer --clang-tidy --core-tests) 
+        silent !(git submodule update --init --recursive ;./install.py --clang-completer --clangd-completer --go-completer --rust-completer --java-completer) 
     endif
 endfunction
 Plug 'Valloric/ListToggle'
@@ -65,7 +64,7 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale', {'for': [ 'go', 'sh', 'python', 'java', 'javascript', 'html']}
 " Plug 'Shougo/echodoc.vim'
-Plug 'Valloric/YouCompleteMe', {'do': function('BuildYCM')}
+Plug 'Valloric/YouCompleteMe', {'do': function('BuildYCM')} | Plug 'ycm-core/lsp-examples'
 Plug 'Valloric/vim-valloric-colorscheme'
 Plug 'zxqfl/tabnine-vim'
 
@@ -83,6 +82,7 @@ Plug 'christoomey/vim-conflicted'
 " plug 'sodapopcan/vim-twiggy'
 
 " Ttmux
+Plug 'vimpostor/vim-tpipeline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'benmills/vimux'
@@ -97,7 +97,8 @@ Plug 'iamcco/markdown-preview.vim'
 Plug 'digitaltoad/vim-pug', {'for': [ 'vim' ]}
 
 "Go
-Plug 'fatih/vim-go', {'for': [ 'go' ], 'do': ':GoInstallBinaries'}
+Plug 'fatih/vim-go', {'for': [ 'go' ], 'do': ':GoUpdateBinaries'}
+
 Plug 'AndrewRadev/splitjoin.vim'
 
 " Json
