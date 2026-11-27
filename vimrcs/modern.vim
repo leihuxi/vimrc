@@ -129,3 +129,48 @@ let g:startify_custom_header = map([
             \ '',
             \ '  , 键稍等弹出快捷键提示',
             \ ], '"    " . v:val')
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vimux：把代码发到 tmux 旁边的 pane 执行（,v 前缀）
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:VimuxOrientation = 'h'
+let g:VimuxHeight = '40%'
+let g:VimuxUseNearest = 1                   " 优先复用已有的旁边 pane
+nnoremap <silent> <leader>vp :VimuxPromptCommand<CR>
+nnoremap <silent> <leader>vl :VimuxRunLastCommand<CR>
+nnoremap <silent> <leader>vi :VimuxInspectRunner<CR>
+nnoremap <silent> <leader>vz :VimuxZoomRunner<CR>
+nnoremap <silent> <leader>vq :VimuxCloseRunner<CR>
+nnoremap <silent> <leader>vc :VimuxInterruptRunner<CR>
+nnoremap <silent> <leader>vs :call VimuxRunCommand(getline('.'))<CR>
+xnoremap <silent> <leader>vs "vy:call VimuxRunCommand(@v)<CR>
+" ,vr 运行当前文件
+let s:runners = {'python': 'python3', 'sh': 'bash', 'zsh': 'zsh', 'javascript': 'node',
+            \ 'typescript': 'npx tsx', 'go': 'go run', 'ruby': 'ruby', 'lua': 'lua', 'rust': 'cargo run'}
+function! s:RunFile() abort
+    update
+    let l:cmd = get(s:runners, &filetype, '')
+    if empty(l:cmd)
+        echohl WarningMsg | echo '未配置 ' . &filetype . ' 的运行命令' | echohl None
+        return
+    endif
+    call VimuxRunCommand(l:cmd . ' ' . shellescape(expand('%:p')))
+endfunction
+nnoremap <silent> <leader>vr :call <SID>RunFile()<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-test：测试在 vimux pane 里运行（,T 前缀）
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let test#strategy = exists('$TMUX') ? 'vimux' : 'vimterminal'
+nnoremap <silent> <leader>Tn :TestNearest<CR>
+nnoremap <silent> <leader>Tf :TestFile<CR>
+nnoremap <silent> <leader>Ts :TestSuite<CR>
+nnoremap <silent> <leader>Tl :TestLast<CR>
+nnoremap <silent> <leader>Tv :TestVisit<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => 会话：,S 开始/停止记录（写入 ./Session.vim），无参数启动 vim 时自动恢复
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <leader>S :Obsession<CR>
+let g:startify_session_autoload = 1
+let g:startify_session_persistence = 1

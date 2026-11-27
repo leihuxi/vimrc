@@ -74,6 +74,8 @@ Plug 'christoomey/vim-conflicted'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'preservim/vimux'
+Plug 'vim-test/vim-test'                " ,Tn/,Tf/,Ts 在 tmux 窗格里跑测试
+Plug 'tpope/vim-obsession'              " ,S 记录会话，配合 tmux-resurrect 恢复
 
 " -- 语言 --
 " json / nginx / protobuf / rust / c++ 语法高亮用 Vim 9 内置 runtime，LSP 由 coc 提供
