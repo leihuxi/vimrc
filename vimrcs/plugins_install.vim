@@ -4,126 +4,88 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plug Vundle
+" => vim-plug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:plugdir='~/.vim_runtime/plugged/'
 
 if empty(glob('~/.vim_runtime/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim_runtime/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    silent !curl -fLo ~/.vim_runtime/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Vim 9 内置插件（取代 vim-commentary / matchit.zip / vim-highlightedyank / editorconfig-vim）
+if !has('nvim')
+    silent! packadd! comment        " gc / gcc 注释
+    silent! packadd! matchit        " % 跳转 if/endif、标签等
+    silent! packadd! hlyank         " 复制时高亮
+    silent! packadd! editorconfig   " 读取 .editorconfig
 endif
 
 call plug#begin(g:plugdir)
 let g:plug_window = 'enew'
 
-" Corlor and Theme
+" -- 外观 --
 Plug 'tomasr/molokai'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'luochen1990/rainbow'
-Plug 'godlygeek/csapprox'
-Plug 'liuchengxu/space-vim-dark'
-" Plug 'altercation/vim-colors-solarized'
-" Plug 'vim-airline/vim-airline-themes'
 
-" General
+" -- 通用编辑 --
 Plug 'tpope/vim-repeat'
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-Plug 'Xuyuanp/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
-Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'} | Plug 'junegunn/fzf.vim'
-Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'mbbill/undotree'
-Plug 'google/vim-searchindex'
-Plug 'vim-scripts/matchit.zip'
-Plug 'tpope/vim-commentary'
-Plug 'Raimondi/delimitMate'
-Plug 'troydm/zoomwintab.vim'
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'amix/open_file_under_cursor.vim'
-Plug 'mhinz/vim-startify'
-Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-sleuth'                 " 自动识别文件的缩进风格
+Plug 'wellle/targets.vim'               " 更多文本对象：ci, ci( 在行内任意位置都能用
+Plug 'mg979/vim-visual-multi'           " 多光标（Ctrl-n）
+Plug 'easymotion/vim-easymotion'
+Plug 'mbbill/undotree'
+Plug 'Raimondi/delimitMate'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'godlygeek/tabular'
+Plug 'liuchengxu/vim-which-key'         " 按下 leader 后弹出可用快捷键提示
+
+" -- 文件 / 搜索 --
+Plug 'preservim/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeFromBookmark']}
+Plug 'Xuyuanp/nerdtree-git-plugin', {'on': ['NERDTreeToggle', 'NERDTreeFind', 'NERDTreeFromBookmark']}
+" fzf 用 Homebrew 安装的版本（原写法会运行 ./install --all 改写 shell 配置）
+Plug isdirectory('/opt/homebrew/opt/fzf') ? '/opt/homebrew/opt/fzf' : 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'mhinz/vim-startify'
 Plug 'brooth/far.vim'
 if has("nvim")
     Plug 'fszymanski/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
     Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
-    " Plug 'arakashic/chromatica.nvim'
 endif
 
-
-" Program
-function! BuildYCM(info)
-    if a:info.status == 'installed' || a:info.force
-        silent !(git submodule update --init --recursive ;./install.py --clang-completer --clangd-completer --go-completer --rust-completer --java-completer) 
-    endif
-endfunction
+" -- 编程：LSP 补全 / 跳转 / 诊断 / 格式化 / 代码片段 --
+" coc.nvim 取代 YouCompleteMe + tabnine + ALE + vim-autoformat + UltiSnips
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'honza/vim-snippets'               " 片段库，由 coc-snippets 加载
 Plug 'Valloric/ListToggle'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-Plug 'majutsushi/tagbar'
-Plug 'w0rp/ale', {'for': [ 'go', 'sh', 'python', 'java', 'javascript', 'html']}
-" Plug 'Shougo/echodoc.vim'
-Plug 'Valloric/YouCompleteMe', {'do': function('BuildYCM')} | Plug 'ycm-core/lsp-examples'
-Plug 'Valloric/vim-valloric-colorscheme'
-Plug 'zxqfl/tabnine-vim'
+Plug 'preservim/tagbar'
 
-" For Code Format
-Plug 'Chiel92/vim-autoformat'
-
-" Snip
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-" Git
+" -- Git --
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'                " :GBrowse 在 GitHub 打开
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-conflicted'
-" Plug 'junegunn/gv.vim'
-" plug 'sodapopcan/vim-twiggy'
 
-" Ttmux
-Plug 'vimpostor/vim-tpipeline'
+" -- tmux --
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux'
-Plug 'benmills/vimux'
+Plug 'preservim/vimux'
 
-" Markdown
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown', {'for': [ 'markdown' ]}
-Plug 'iamcco/mathjax-support-for-mkdp'
-Plug 'iamcco/markdown-preview.vim'
+" -- 语言 --
+" json / nginx / protobuf / rust / c++ 语法高亮用 Vim 9 内置 runtime，LSP 由 coc 提供
+Plug 'preservim/vim-markdown', {'for': [ 'markdown' ]}
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown'] }
+if executable('go')
+    Plug 'fatih/vim-go', {'for': [ 'go' ], 'do': ':GoUpdateBinaries'}
+else
+    Plug 'fatih/vim-go', {'for': [ 'go' ]}
+endif
+Plug 'vim-utils/vim-man'                " :Man（zsh 的 nman 用到）
 
-" Vim script
-Plug 'digitaltoad/vim-pug', {'for': [ 'vim' ]}
+" vim-devicons 必须最后加载（需要 Nerd Font）
+Plug 'ryanoasis/vim-devicons'
 
-"Go
-Plug 'fatih/vim-go', {'for': [ 'go' ], 'do': ':GoUpdateBinaries'}
-
-Plug 'AndrewRadev/splitjoin.vim'
-
-" Json
-Plug 'leshill/vim-json', {'for': [ 'json' ]}
-
-" Protobuf
-Plug 'uarun/vim-protobuf',  {'for': [ 'proto' ]}
-
-" Nginx
-Plug 'chr4/nginx.vim'
-
-"Rust
-Plug 'rust-lang/rust.vim'
-
-" C family
-Plug 'octol/vim-cpp-enhanced-highlight', {'for': [ 'c', 'cpp' ]}
-Plug 'jsfaint/gen_tags.vim' , {'for': [ 'c', 'cpp' ]}
-Plug 'derekwyatt/vim-fswitch', {'for': [ 'c', 'cpp' ]}
-
-" Todo
-" Plug 'xolox/vim-misc' | Plug 'xolox/vim-notes'
-
-" Android
-" Plug 'hsanson/vim-android'
-
-" Cmake
-" Plug 'jalcine/cmake.vim'
 call plug#end()

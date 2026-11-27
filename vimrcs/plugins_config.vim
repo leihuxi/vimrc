@@ -6,9 +6,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plug Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("mac")
-    let g:clangdir='/usr/local/opt/llvm/lib'
-endif
 
 let g:rootdir='~/.vim_runtime/'
 let g:tempdir=g:rootdir.'temp_dirs/'
@@ -30,25 +27,60 @@ let g:gitgutter_max_signs=500  " default value
 " let g:gitgutter_highlight_lines = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Ycm
+" => coc.nvim（取代 YouCompleteMe，<leader>j* 键位保持不变）
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>jj :YcmCompleter GoTo<CR>
-nnoremap <leader>ji :YcmCompleter GoToInclude<CR>
-nnoremap <leader>je :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>jr :YcmCompleter GoToReferences<CR>
-nnoremap <leader>jw :YcmCompleter GetDoc<CR>
-nnoremap <leader>ja :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>jp :YcmCompleter GetParent<CR>
-nnoremap <leader>jt :YcmCompleter GetType<CR>
-nnoremap <leader>jz :YcmCompleter ClearCompilationFlagCache<CR>
-nnoremap <leader>jn :YcmCompleter RefactorRename<space>
-nnoremap <leader>jf :YcmForceCompileAndDiagnostics <CR>
-nnoremap <leader>jx :YcmCompleter FixIt<CR>
-nnoremap <leader>jc :YcmDiags<CR>
+let g:coc_global_extensions = ['coc-json', 'coc-yaml', 'coc-sh', 'coc-pyright',
+            \ 'coc-clangd', 'coc-go', 'coc-rust-analyzer', 'coc-tsserver',
+            \ 'coc-html', 'coc-css', 'coc-vimlsp', 'coc-snippets']
+set updatetime=300
+set signcolumn=yes
 
-let g:ycm_global_ycm_extra_conf = g:rootdir.'plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
-let g:ycm_autoclose_preview_window_after_completion = 1
+" Tab / S-Tab 选择补全，回车确认
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) :
+            \ CheckBackspace() ? "\<Tab>" : coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+            \ : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+function! CheckBackspace() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+inoremap <silent><expr> <c-@> coc#refresh()
+
+nmap <leader>jj <Plug>(coc-definition)
+nmap <leader>ji <Plug>(coc-definition)
+nmap <leader>je <Plug>(coc-declaration)
+nmap <leader>jd <Plug>(coc-definition)
+nmap <leader>jr <Plug>(coc-references)
+nnoremap <silent> <leader>jw :call CocActionAsync('doHover')<CR>
+nmap <leader>ja <Plug>(coc-definition)
+nnoremap <silent> <leader>jp :call CocActionAsync('showOutgoingCalls')<CR>
+nmap <leader>jt <Plug>(coc-type-definition)
+nnoremap <silent> <leader>jz :CocRestart<CR>
+nmap <leader>jn <Plug>(coc-rename)
+nmap <leader>jf <Plug>(coc-format)
+nmap <leader>jx <Plug>(coc-fix-current)
+nnoremap <silent> <leader>jc :CocList diagnostics<CR>
+" 常用的标准键位
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+xmap <leader>ca <Plug>(coc-codeaction-selected)
+nmap <leader>ca <Plug>(coc-codeaction-cursor)
+nnoremap <silent> <leader>co :CocList outline<CR>
+" K：有 LSP 时显示文档，否则查 man
+function! ShowDocumentation()
+    if exists('*CocAction') && CocAction('hasProvider', 'hover')
+        call CocActionAsync('doHover')
+    else
+        execute 'Man ' . expand('<cword>')
+    endif
+endfunction
+nnoremap <silent> K :call ShowDocumentation()<CR>
+autocmd CursorHold * silent! call CocActionAsync('highlight')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => FZF
@@ -64,9 +96,9 @@ let g:fzf_action = {
 let g:fzf_layout = { 'down': '~40%' }
 
 " In Neovim, you can set up fzf window using a Vim command
-let g:fzf_layout = { 'window': 'enew' }
-let g:fzf_layout = { 'window': '-tabnew' }
-let g:fzf_layout = { 'window': '10new' }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
+let g:fzf_vim = {}
+let g:fzf_vim.preview_window = ['right,50%', 'ctrl-/']
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -101,7 +133,7 @@ map <leader>f  :FZF<cr>
 map <leader>F  :FZF!<cr>
 map <leader>o  :FzfBuffers<cr>
 
-map <leader>fa :FzfAg <c-r><c-w><cr>
+map <leader>fa :FzfRg <c-r><c-w><cr>
 map <leader>fm :FzfMaps<cr>
 map <leader>fk :FzfMarks<cr>
 map <leader>fi :FzfCommits<cr>
@@ -109,12 +141,11 @@ map <leader>fb :FzfBCommits<cr>
 map <leader>fh :FzfHistory<cr>
 map <leader>fg :FzfGFiles?<cr>
 map <leader>fe :FzfFiles?<cr>
-map <leader>fs :FzfSnippets<cr>
 map <leader>ft :FzfTags<cr>
 map <leader>fl :FzfLines<cr>
 map <leader>fo :FzfColors<cr>
 map <leader>fc :FzfCommands<cr>
-map <leader>fd :FzfAg<cr>
+map <leader>fd :FzfRg<cr>
 map <leader>fr :FzfRg<cr>
 
 " Mapping selecting mappings
@@ -125,7 +156,7 @@ omap <leader><tab> <plug>(fzf-maps-o)
 " Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+inoremap <expr> <c-x><c-j> fzf#vim#complete#path('rg --files')
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " Advanced customization using autoload functions
@@ -162,16 +193,14 @@ let g:lt_height = 10
 nnoremap <leader>u :UndotreeToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => UltiSnip and Snippet
+" => 代码片段（coc-snippets，兼容原 UltiSnips 片段与 ii 触发键）
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger="ii"
-" we can't use <tab> as our snippet key since we use that with YouCompleteMe
-" let g:UltiSnipsSnippetDirectories=["UltiSnips"]
-let g:UltiSnipsListSnippets        = "<c-m-s>"
-let g:UltiSnipsJumpForwardTrigger  = "<right>"
-let g:UltiSnipsJumpBackwardTrigger = "<left>"
-" let g:snips_author                 = 'leihu xi'
-" let g:neosnippet#snippets_directory= g:tempdir.'vim-snippets/snippets'
+imap ii <Plug>(coc-snippets-expand)
+let g:coc_snippet_next = '<right>'
+let g:coc_snippet_prev = '<left>'
+let g:coc_user_config = get(g:, 'coc_user_config', {})
+let g:coc_user_config['snippets.ultisnips.directories'] = ['UltiSnips', expand('~/.vim_runtime/UltiSnips')]
+nnoremap <silent> <leader>fs :CocList snippets<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NerdTree
@@ -213,9 +242,9 @@ endif
 let g:rainbow_active = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => A.vim
+" => C/C++ 头文件/源文件切换（clangd）
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>a :A<CR>
+nnoremap <silent> <leader>a :CocCommand clangd.switchSourceHeader<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Tmux-navigator
@@ -226,20 +255,17 @@ let g:tmux_navigator_save_on_switch = 1
 "* Custom Key Bindings
 let g:tmux_navigator_no_mappings = 1
 
-nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
-nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
-nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
-nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
-nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'dark'
+let g:airline_theme = 'molokai'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#coc#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Tmux navigator
@@ -278,16 +304,16 @@ nmap <leader>s <Plug>(easymotion-s)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:tagbar_left = 0
 let g:tagbar_sort = 0
-if has("gui_macvim")
-    let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+if executable('/opt/homebrew/bin/ctags')
+    let g:tagbar_ctags_bin = '/opt/homebrew/bin/ctags'   " universal-ctags（系统自带的 BSD ctags 不支持）
 endif
 
 nnoremap <Leader>tt :TagbarToggle<cr><c-w>=
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Nman
+" => Nman（zsh 的 nman 函数调用；由 vim-man 提供 :Man）
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent>K :Nman <C-R><C-W><CR>
+command! -nargs=+ -complete=shellcmd Nman Man <args> | only
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-go
@@ -303,7 +329,11 @@ let g:go_autodetect_gopath = 1
 let g:go_list_type = "quickfix"
 let g:go_highlight_extra_types = 1
 let g:go_highlight_generate_tags = 1
-let g:go_auto_sameids = 1
+" 补全 / 跳转 / 文档交给 coc-go（gopls），vim-go 只负责运行、测试、覆盖率等命令
+let g:go_gopls_enabled = 0
+let g:go_code_completion_enabled = 0
+let g:go_def_mapping_enabled = 0
+let g:go_doc_keywordprg_enabled = 0
 let g:go_textobj_include_function_doc = 1
 
 if has("autocmd")
@@ -326,60 +356,16 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-json
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>pt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
-let g:vim_json_syntax_conceal = 0
+nmap <leader>pt <Esc>:%!python3 -m json.tool<CR><Esc>:set filetype=json<CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Color-coded
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:color_coded_filetypes = ['c', 'cc', 'cpp', 'objc', 'go', 'sh', 'py', 'java']
-" Disable color_coded in diff mode
-if &diff
-    let g:color_coded_enabled = 0
-endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Chromatica
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("mac")
-    let g:chromatica#libclang_path=g:clangdir
-endif
-let g:chromatica#enable_at_startup=1
-let g:chromatica#highlight_feature_level=1
-let g:chromatica#responsive_mode=1
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Ale(syntax checker)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"use ycm for c && c++
-let g:ale_linters = {
-            \ 'c': [''],
-            \ 'cpp': [''],
-            \ 'javascript': ['eslint'],
-            \ 'python': ['flake8'],
-            \ 'go': ['go', 'golint', 'errcheck'],
-            \ 'html': ['alex']
-            \}
 
-" let g:ale_linters_explicit = 1
-
-" Disabling highlighting
-let g:ale_set_highlights = 0
-
-" Only run linting when saving the file
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim Note
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:notes_directories = ['~/Documents/Notes']
-let g:notes_suffix = '.md'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NerdTree Git Tab
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
             \ "Modified"  : "✹",
             \ "Staged"    : "✚",
             \ "Untracked" : "✭",
@@ -392,132 +378,29 @@ let g:NERDTreeIndicatorMapCustom = {
             \ "Unknown"   : "?"
             \ }
 
-let g:android_sdk_path = '~/work/Android/Sdk/ndk-bundle'
+let g:android_sdk_path = expand('~/Library/Android/sdk')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Rust
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:rust_clip_command = 'xclip -selection clipboard'
+let g:rust_clip_command = has('mac') ? 'pbcopy' : 'xclip -selection clipboard'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim-fswitch
+" => which-key：按 , 后稍等即弹出快捷键提示
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Switch to the file and load it into the current window >
-nmap <silent> <Leader>a :FSHere<cr>
+set timeoutlen=500
+nnoremap <silent> <leader> :<c-u>WhichKey ','<CR>
+vnoremap <silent> <leader> :<c-u>WhichKeyVisual ','<CR>
+let g:which_key_use_floating_win = 1
 
-if has("autocmd")
-    augroup mycppfiles
-        au!
-        au BufEnter *.h let b:fswitchdst  = 'cpp,cc,C,c'
-        au BufEnter *.cc let b:fswitchdst  = 'hh,hpp,h'
-        au BufEnter *.h let b:fswitchlocs = 'reg:/include/src/,reg:/include.*/src/'
-    augroup END
-endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" => UltiSnips                                "
-""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsSnippetsDir  = g:rootdir.'/UltiSnips/'
-
-let s:lsp = g:plugdir.'/lsp-examples'
-let g:ycm_language_server = [
-            \   {
-            \     'name': 'angular',
-            \     'cmdline': [ 'node' ,
-            \        expand( s:lsp . '/angular/node_modules/@angular/language-server' ),
-            \        '--ngProbeLocations',
-            \        expand( s:lsp . '/angular/node_modules/' ),
-            \        '--tsProbeLocations',
-            \        expand( s:lsp . '/angular/node_modules/' ),
-            \        '--stdio' ],
-            \     'filetypes': [ 'ts','html' ],
-            \   }
-            \   {
-            \     'name': 'bash',
-            \     'cmdline': [ 'node', expand( s:lsp . '/bash/node_modules/.bin/bash-language-server' ), 'start' ],
-            \     'filetypes': [ 'sh', 'bash' ],
-            \   },
-            \   {
-            \     'name': 'dart',
-            \     'cmdline': [ 'dart', expand( s:lsp . '/dart/analysis_server.dart.snapshot' ), '--lsp' ],
-            \     'filetypes': [ 'dart' ],
-            \   },
-            \   {
-            \     'name': 'groovy',
-            \     'cmdline': [ 'java', '-jar', expand( s:lsp . '/groovy/groovy-language-server/build/libs/groovy-language-server-all.jar' ) ],
-            \     'filetypes': [ 'groovy' ]
-            \   },
-            \   {
-            \     'name': 'yaml',
-            \     'cmdline': [ 'node', expand( s:lsp . '/yaml/node_modules/.bin/yaml-language-server' ), '--stdio' ],
-            \     'filetypes': [ 'yaml' ],
-            \   },
-            \   {
-            \     'name': 'php',
-            \     'cmdline': [ 'php', expand( s:lsp . '/php/vendor/bin/php-language-server.php' ) ],
-            \     'filetypes': [ 'php' ],
-            \   },
-            \   {
-            \     'name': 'json',
-            \     'cmdline': [ 'node', expand( s:lsp . '/json/node_modules/.bin/vscode-json-languageserver' ), '--stdio' ],
-            \     'filetypes': [ 'json' ],
-            \   },
-            \   {
-            \     'name': 'ruby',
-            \     'cmdline': [ expand( s:lsp . '/ruby/bin/solargraph' ), 'stdio' ],
-            \     'filetypes': [ 'ruby' ],
-            \   },
-            \   { 'name': 'kotlin',
-            \     'filetypes': [ 'kotlin' ],
-            \     'cmdline': [ expand( s:lsp . '/kotlin/server/build/install/server/bin/server' ) ],
-            \   },
-            \   { 'name': 'd',
-            \     'filetypes': [ 'd' ],
-            \     'cmdline': [ expand( s:lsp . '/d/serve-d' ) ],
-            \   },
-            \   { 'name': 'vue',
-            \     'filetypes': [ 'vue' ],
-            \     'cmdline': [ expand( s:lsp . '/vue/node_modules/.bin/vls' ) ]
-            \   },
-            \   { 'name': 'docker',
-            \     'filetypes': [ 'dockerfile' ],
-            \     'cmdline': [ expand( s:lsp . '/docker/node_modules/.bin/docker-langserver' ), '--stdio' ]
-            \   },
-            \   { 'name': 'vim',
-            \     'filetypes': [ 'vim' ],
-            \     'cmdline': [ expand( s:lsp . '/viml/node_modules/.bin/vim-language-server' ), '--stdio' ]
-            \   },
-            \   { 'name': 'scala',
-            \     'filetypes': [ 'scala' ],
-            \     'cmdline': [ 'metals-vim' ],
-            \     'project_root_files': [ 'build.sbt' ]
-            \   },
-            \   { 'name': 'purescript',
-            \     'filetypes': [ 'purescript' ],
-            \     'cmdline': [ expand( s:lsp . '/viml/node_modules/.bin/purescript-language-server' ), '--stdio' ]
-            \   },
-            \   { 'name': 'fortran',
-            \     'filetypes': [ 'fortran' ],
-            \     'cmdline': [ 'fortls' ],
-            \   },
-            \   { 'name': 'haskell',
-            \     'filetypes': [ 'haskell', 'hs', 'lhs' ],
-            \     'cmdline': [ 'hie-wrapper', '--lsp' ],
-            \     'project_root_files': [ '.stack.yaml', 'cabal.config', 'package.yaml' ]
-            \   },
-            \   { 'name': 'julia',
-            \     'filetypes': [ 'julia' ],
-            \     'project_root_files': [ 'Project.toml' ],
-            \     'cmdline': <See note below>
-            \   },
-            \   { 'name': 'lua',
-            \     'filetypes': [ 'lua' ],
-            \     'cmdline': [ expand( s:lsp . '/lua/lua-language-server/root/extension/server/bin/macOS/lua-language-server'),
-            \                  expand( s:lsp . '/lua/lua-language-server/root/extension/server/main.lua' ) ]
-            \   },
-            \   { 'name': 'rust',
-            \     'filetypes': [ 'rust' ],
-            \     'cmdline': [ expand( s:lsp .  '/rust/rust-analyzer/target/release/rust-analyzer' ) ],
-            \     'project_root_files': [ 'Cargo.toml' ],
-            \   },
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Startify
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:startify_change_to_vcs_root = 1
+let g:startify_fortune_use_unicode = 1
+let g:startify_lists = [
+            \ { 'type': 'files',     'header': ['   最近文件'] },
+            \ { 'type': 'dir',       'header': ['   当前目录 '. getcwd()] },
+            \ { 'type': 'sessions',  'header': ['   会话'] },
+            \ { 'type': 'bookmarks', 'header': ['   书签'] },
             \ ]
