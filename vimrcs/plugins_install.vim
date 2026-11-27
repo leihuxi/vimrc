@@ -25,7 +25,8 @@ call plug#begin(g:plugdir)
 let g:plug_window = 'enew'
 
 " -- 外观 --
-Plug 'tomasr/molokai'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }   " 与终端 / tmux 统一的 Catppuccin Mocha
+Plug 'tomasr/molokai'                           " 备用：:colorscheme molokai
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'luochen1990/rainbow'

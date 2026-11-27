@@ -11,12 +11,16 @@ let g:rootdir='~/.vim_runtime/'
 let g:tempdir=g:rootdir.'temp_dirs/'
 
 """"""""""""""""""""""""""""""
-" => Molokai
+" => 配色：Catppuccin Mocha（找不到时回退 molokai）
 """"""""""""""""""""""""""""""
-colorscheme molokai
 set background=dark
 let g:molokai_original=1
 let g:rehash256 = 1
+try
+    colorscheme catppuccin_mocha
+catch
+    colorscheme molokai
+endtry
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Git gutter (Git diff)
@@ -260,7 +264,7 @@ let g:tmux_navigator_no_mappings = 1
 " => Airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'molokai'
+let g:airline_theme = g:colors_name ==# 'catppuccin_mocha' ? 'catppuccin_mocha' : 'molokai'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
