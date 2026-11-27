@@ -174,3 +174,31 @@ nnoremap <silent> <leader>Tv :TestVisit<CR>
 nnoremap <silent> <leader>S :Obsession<CR>
 let g:startify_session_autoload = 1
 let g:startify_session_persistence = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => 输入法：离开插入模式切英文，回到插入模式恢复上次的输入法（需要 macism）
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if executable('macism')
+  let s:ime_english = 'com.apple.keylayout.USExtended'
+  let s:ime_insert = s:ime_english
+  function! s:ImeSet(id) abort
+    if has('nvim') | call jobstart(['macism', a:id]) | else | call job_start(['macism', a:id]) | endif
+  endfunction
+  function! s:ImeLeaveInsert() abort
+    let s:ime_insert = trim(system('macism'))
+    if s:ime_insert !=# s:ime_english
+      call s:ImeSet(s:ime_english)
+    endif
+  endfunction
+  function! s:ImeEnterInsert() abort
+    if s:ime_insert !=# s:ime_english
+      call s:ImeSet(s:ime_insert)
+    endif
+  endfunction
+  augroup ime_switch
+    autocmd!
+    autocmd InsertLeave * call s:ImeLeaveInsert()
+    autocmd InsertEnter * call s:ImeEnterInsert()
+    autocmd VimEnter,FocusGained * call s:ImeSet(s:ime_english)
+  augroup END
+endif
